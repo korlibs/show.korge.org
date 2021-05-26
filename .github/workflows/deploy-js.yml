@@ -1,5 +1,7 @@
 # Deploy JS game to GitHub Pages
 
+name: "Testing 🐛 & Deploying 🚀"
+
 on:
   push:
     branches: [ "main", "master" ]
@@ -15,6 +17,8 @@ jobs:
           java-version: 1.8
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew jvmTest
       - name: Buid JS bundle
         run: |
           ./gradlew jsBrowserProductionWebpack

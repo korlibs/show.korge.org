@@ -17,7 +17,7 @@ buildscript {
 apply<KorgeGradlePlugin>()
 
 korge {
-	id = "com.sample.demo"
+	id = "org.korge.show"
 
 // To enable all targets at once
 
