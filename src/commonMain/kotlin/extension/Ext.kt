@@ -10,6 +10,8 @@ import kotlin.reflect.*
 expect val ext: Ext
 
 open class Ext {
+	open val hasExternalLayout: Boolean get() = false
+
 	open fun preinit() {
 	}
 
@@ -42,6 +44,7 @@ class SceneInfo<T : ShowScene>(
 	val gen: suspend AsyncInjector.() -> T
 ) {
 	val className get() = clazz.portableSimpleName
+	override fun toString(): String = title
 }
 
 inline fun <reified T : ShowScene> SceneInfo(

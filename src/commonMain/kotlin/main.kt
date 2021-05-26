@@ -1,10 +1,12 @@
 import com.soywiz.kds.*
 import com.soywiz.korge.*
 import com.soywiz.korge.scene.*
+import com.soywiz.korge.ui.*
 import com.soywiz.korge.view.*
 import com.soywiz.korgw.*
 import com.soywiz.korim.color.*
 import com.soywiz.korio.async.*
+import com.soywiz.korio.util.*
 import extension.*
 import scene1.*
 import scene2.*
@@ -17,7 +19,20 @@ suspend fun main() {
 			SceneInfo(title = "Tinting", group = "Basics", srcPath = "src/commonMain/kotlin/scene2/Scene2.kt") { Scene2() },
 		)
 
-		this.mainSceneContainer = sceneContainer()
+		// Elements
+		run {
+			this.mainSceneContainer = sceneContainer()
+			//ext.hasExternalLayout
+			if (!OS.isJs) {
+				uiComboBox(items = registeredScenes.values.toList()).onSelectionUpdate {
+					launchImmediately {
+						changeToScene(stage, it.selectedItem?.className)
+					}
+				}
+			} else {
+				// On JS we have
+			}
+		}
 
 		ext.init(this)
 		ext.registerEvent("changeScene") { detail ->
@@ -31,6 +46,7 @@ suspend fun main() {
 				changeToSceneDefault(stage)
 			}
 		}
+
 
 		changeToSceneDefault(stage)
 	}

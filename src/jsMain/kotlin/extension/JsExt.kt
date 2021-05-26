@@ -2,11 +2,15 @@ package extension
 
 import com.soywiz.korge.view.*
 import kotlinx.browser.*
+import kotlinx.dom.*
 import org.w3c.dom.*
 import org.w3c.dom.events.*
 
 actual val ext: Ext = object : Ext() {
 	val canvasQuery by lazy { document.querySelector("#mycustomcanvas") }
+
+	override val hasExternalLayout: Boolean get() = canvasQuery != null
+
 	override fun preinit() {
 		val dwindow = window.asDynamic()
 		if (canvasQuery != null) {
@@ -40,6 +44,16 @@ actual val ext: Ext = object : Ext() {
 				}
 			}
 		}
+
+		registerEvent("changedScene") { detail ->
+			val className = detail.toString()
+			val sceneId = "scene-${className}"
+			for (active in document.querySelectorAll("a.active").toList()) {
+				active.unsafeCast<HTMLElement>().removeClass("active")
+			}
+			document.querySelector("#$sceneId")?.addClass("active")
+		}
+
 	}
 
 	override fun registerEvent(event: String, handler: (detail: Any?) -> Unit) {
@@ -56,3 +70,5 @@ actual val ext: Ext = object : Ext() {
 		return document.location?.hash?.trim('#')
 	}
 }
+
+fun NodeList.toList(): List<Node> = (0 until length).map { this[it].unsafeCast<Node>() }
