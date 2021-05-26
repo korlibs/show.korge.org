@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+	<link rel="apple-touch-icon" href="appicon.png" />
+	<link rel="icon" href="favicon.ico" />
+	<title>TODO</title>
+	<style type="text/css">html, body { touch-action: auto; } html, body, canvas { -webkit-tap-highlight-color: rgba(0,0,0,0); touch-action: none; } </style>
+	<!-- custom-html-head.template.html -->
+
+</head>
+<body>
+
+<div id="web_container">
+	<div id="scene_tree">
+		Loading...
+	</div>
+	<div>
+		<canvas id="mycustomcanvas" style="background:black;width:800px;height:600px;" width="800" height="600"></canvas>
+	</div>
+</div>
+
+
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	cursor: default;
+}
+#web_container {
+	display: flex;
+	flex-direction: row;
+}
+#scene_tree {
+	width: 200px;
+	background: #c7a8e7;
+	padding: 1em;
+	overflow-y: auto;
+}
+#scene_tree h2 {
+	font: 14px sans-serif;
+	font-weight: bold;
+	color: #3a0968;
+}
+#scene_tree a {
+	display: block;
+	padding: 0 0 0.7em 2em;
+	font: 14px sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+	color: #681bb1;
+}
+#scene_tree a:hover {
+	color: #3a0968;
+}
+
+</style>
+
+<script type="text/javascript" src="korge-show.js"></script>
+
+<script type="text/javascript">
+	(() => {
+
+		let options = { passive: false };
+		let lastTouchEnd = 0;
+		document.addEventListener("touchstart", (e) => { e.preventDefault(); }, options);
+		document.addEventListener('touchmove', (e) => { if (e.scale !== 1) e.preventDefault(); }, options);
+		document.addEventListener('touchend', (e) => {
+			const now = Date.now();
+			if (now - lastTouchEnd <= 300) e.preventDefault();
+			lastTouchEnd = now;
+		}, options);
+	})()
+</script>
+
+</body>
+</html>
