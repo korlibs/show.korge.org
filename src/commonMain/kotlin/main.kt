@@ -1,3 +1,4 @@
+import box2d.*
 import com.soywiz.kds.*
 import com.soywiz.korge.*
 import com.soywiz.korge.scene.*
@@ -17,6 +18,7 @@ suspend fun main() {
 		register(
 			SceneInfo(title = "Rotating Image", group = "Basics", srcPath = "src/commonMain/kotlin/scene1/Scene1.kt") { Scene1() },
 			SceneInfo(title = "Tinting", group = "Basics", srcPath = "src/commonMain/kotlin/scene2/Scene2.kt") { Scene2() },
+			SceneInfo(title = "Simple Box2d", group = "Box2d", srcPath = "src/commonMain/kotlin/box2d/SimpleBox2dScene.kt") { SimpleBox2dScene() },
 		)
 
 		// Elements
@@ -46,7 +48,6 @@ suspend fun main() {
 				changeToSceneDefault(stage)
 			}
 		}
-
 
 		changeToSceneDefault(stage)
 	}
