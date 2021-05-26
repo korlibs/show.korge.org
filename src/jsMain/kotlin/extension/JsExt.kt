@@ -7,12 +7,13 @@ import org.w3c.dom.events.*
 
 actual val ext: Ext = object : Ext() {
 	override fun init(stage: Stage) {
-		document.location!!.hash
+		//window.onhashchange =
+		//document.location!!.hash
 	}
 
 	override fun registerEvent(event: String, handler: (detail: Any?) -> Unit) {
 		window.addEventListener(event, { ev: Event ->
-			handler((ev as CustomEvent).detail)
+			handler(ev.unsafeCast<CustomEvent>().detail)
 		})
 	}
 
