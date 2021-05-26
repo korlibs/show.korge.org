@@ -1,0 +1,9 @@
+HELLO WORLD!
+<canvas id="mycustomcanvas"></canvas>
+
+<script type="text/javascript">
+	window.korgwCanvasQuery = "#mycustomcanvas"
+	window.addEventListener("changeScene", (value) => {
+		console.warn("changeScene", value)
+	})
+</script>
