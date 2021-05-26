@@ -14,15 +14,11 @@ class Scene1 : ShowScene() {
 		val minDegrees = (-16).degrees
 		val maxDegrees = (+16).degrees
 
-		val a: UInt = 1u
-
-		println(a)
-
 		val image = image(resourcesVfs["korge.png"].readBitmap()) {
 			rotation = maxDegrees
 			anchor(.5, .5)
 			scale(.8)
-			position(256, 256)
+			position(400, 300)
 		}
 
 		while (true) {

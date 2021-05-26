@@ -1,14 +1,8 @@
-<div style="margin-left: 300px;">
-	<canvas id="mycustomcanvas" style="background:black;width:800px;height:600px;" width="400" height="300"></canvas>
+<div id="web_container">
+	<div id="scene_tree">
+		Loading...
+	</div>
+	<div>
+		<canvas id="mycustomcanvas" style="background:black;width:800px;height:600px;" width="800" height="600"></canvas>
+	</div>
 </div>
-<ul>
-	<li><a href="#Scene1">Scene1</a></li>
-	<li><a href="#Scene2">Scene2</a></li>
-</ul>
-
-<script type="text/javascript">
-	window.korgwCanvasQuery = "#mycustomcanvas"
-	window.addEventListener("changeScene", (value) => {
-		console.warn("changeScene", value)
-	})
-</script>

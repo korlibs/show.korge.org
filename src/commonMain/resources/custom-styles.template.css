@@ -1,0 +1,31 @@
+body {
+	margin: 0;
+	padding: 0;
+	cursor: default;
+}
+#web_container {
+	display: flex;
+	flex-direction: row;
+}
+#scene_tree {
+	width: 200px;
+	background: #c7a8e7;
+	padding: 1em;
+	overflow-y: auto;
+}
+#scene_tree h2 {
+	font: 14px sans-serif;
+	font-weight: bold;
+	color: #3a0968;
+}
+#scene_tree a {
+	display: block;
+	padding: 0 0 0.7em 2em;
+	font: 14px sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+	color: #681bb1;
+}
+#scene_tree a:hover {
+	color: #3a0968;
+}

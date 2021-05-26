@@ -10,6 +10,9 @@ import kotlin.reflect.*
 expect val ext: Ext
 
 open class Ext {
+	open fun preinit() {
+	}
+
 	open fun init(stage: Stage) {
 	}
 

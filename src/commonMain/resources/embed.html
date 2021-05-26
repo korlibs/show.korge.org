@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+	<link rel="apple-touch-icon" href="appicon.png" />
+	<link rel="icon" href="favicon.ico" />
+	<title>KorGE Web Samples</title>
+	<style type="text/css">html, body { touch-action: auto; } html, body, canvas { -webkit-tap-highlight-color: rgba(0,0,0,0); touch-action: none; } </style>
+</head>
+<body>
+
+<script type="text/javascript" src="korge-show.js"></script>
+
+<script type="text/javascript">
+	(() => {
+
+		let options = { passive: false };
+		let lastTouchEnd = 0;
+		document.addEventListener("touchstart", (e) => { e.preventDefault(); }, options);
+		document.addEventListener('touchmove', (e) => { if (e.scale !== 1) e.preventDefault(); }, options);
+		document.addEventListener('touchend', (e) => {
+			const now = Date.now();
+			if (now - lastTouchEnd <= 300) e.preventDefault();
+			lastTouchEnd = now;
+		}, options);
+	})()
+</script>
+
+</body>
+</html>
