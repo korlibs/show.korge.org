@@ -20,11 +20,10 @@ suspend fun main() {
 		val GROUP_ADVANCED = "Advanced"
 		val GROUP_PHYSICS = "Physics"
 		register(
-			SceneInfo(title = "Rotating Image", group = GROUP_BASICS, srcPath = "src/commonMain/kotlin/scene1/Scene1.kt") { Scene1() },
-			SceneInfo(title = "Tinting", group = GROUP_BASICS, srcPath = "src/commonMain/kotlin/scene2/Scene2.kt") { Scene2() },
-			SceneInfo(title = "Filters", group = GROUP_ADVANCED, srcPath = "src/commonMain/kotlin/filters/FiltersScene.kt") { FiltersScene() },
-			SceneInfo(title = "Simple Box2d", group = GROUP_PHYSICS, srcPath = "src/commonMain/kotlin/box2d/SimpleBox2dScene.kt") { SimpleBox2dScene() },
-
+			SceneInfo(title = "Rotating Image", group = GROUP_BASICS, srcPath = "scene1/Scene1.kt") { Scene1() },
+			SceneInfo(title = "Tinting", group = GROUP_BASICS, srcPath = "scene2/Scene2.kt") { Scene2() },
+			SceneInfo(title = "Filters", group = GROUP_ADVANCED, srcPath = "filters/FiltersScene.kt") { FiltersScene() },
+			SceneInfo(title = "Simple Box2d", group = GROUP_PHYSICS, srcPath = "box2d/SimpleBox2dScene.kt") { SimpleBox2dScene() },
 		)
 
 		// Elements
