@@ -6,12 +6,17 @@ body {
 #web_container {
 	display: flex;
 	flex-direction: row;
+	box-sizing: border-box;
+	width: 100vw;
+	height: 100vh;
 }
 #scene_tree {
 	width: 200px;
 	background: #c7a8e7;
+	box-sizing: border-box;
 	padding: 1em;
 	overflow-y: auto;
+	height: 100vh;
 }
 #scene_tree h2 {
 	font: 16px sans-serif;
