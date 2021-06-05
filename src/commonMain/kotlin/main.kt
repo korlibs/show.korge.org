@@ -13,6 +13,7 @@ import extension.*
 import filters.*
 import scene1.*
 import scene2.*
+import spine.*
 
 suspend fun main() {
 	ext.preinit()
@@ -27,6 +28,7 @@ suspend fun main() {
 			SceneInfo(title = "Filters", group = GROUP_ADVANCED, srcPath = "filters/FiltersScene.kt") { FiltersScene() },
 			SceneInfo(title = "Simple Box2d", group = GROUP_PHYSICS, srcPath = "box2d/SimpleBox2dScene.kt") { SimpleBox2dScene() },
 			//SceneInfo(title = "Dragonbones", group = GROUP_SKELETON, srcPath = "dragonbones/DragonbonesScene.kt") { DragonbonesScene() }, // JS-IR has issues with this demo
+			SceneInfo(title = "Spine", group = GROUP_SKELETON, srcPath = "spine/SpineScene.kt") { SpineScene() },
 		)
 
 		// Elements
