@@ -23,7 +23,7 @@ class SpineScene : ShowScene() {
         stateData.setMix("jump", "run", 0.2f)
 
         val state = AnimationState(stateData) // Holds the animation state for a skeleton (current animation, time, etc).
-        state.timeScale = 0.5f // Slow all animations down to 50% speed.
+        state.timeScale = 1.1f // Speed ups all animations down to 110% speed.
 
         // Queue animations on track 0.
         state.setAnimation(0, "run", true)
@@ -38,11 +38,12 @@ class SpineScene : ShowScene() {
         // Add view
         container {
             //speed = 2.0
-            speed = 0.5
+            speed = 1.0
             scale(2.0)
             position(views.virtualWidth * 0.5, views.virtualHeight * 0.9)
             skeletonView(skeleton, state)
             solidRect(10.0, 10.0, Colors.RED).centered
+            mouseEnabled = false
         }
     }
 }
