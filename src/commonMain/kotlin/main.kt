@@ -1,4 +1,5 @@
 import box2d.*
+import bunnymark.*
 import com.soywiz.kds.*
 import com.soywiz.korge.*
 import com.soywiz.korge.scene.*
@@ -24,6 +25,7 @@ suspend fun main() {
 		val GROUP_PHYSICS = "Physics"
 		val GROUP_SKELETON = "Skeleton"
 		val GROUP_INPUT = "Input"
+		val GROUP_PERFORMANCE = "Performance"
 		register(
 			SceneInfo(title = "Rotating Image", group = GROUP_BASICS, srcPath = "scene1/Scene1.kt") { Scene1() },
 			SceneInfo(title = "Tinting", group = GROUP_BASICS, srcPath = "scene2/Scene2.kt") { Scene2() },
@@ -32,6 +34,7 @@ suspend fun main() {
 			//SceneInfo(title = "Dragonbones", group = GROUP_SKELETON, srcPath = "dragonbones/DragonbonesScene.kt") { DragonbonesScene() }, // JS-IR has issues with this demo
 			SceneInfo(title = "Spine", group = GROUP_SKELETON, srcPath = "spine/SpineScene.kt") { SpineScene() },
 			SceneInfo(title = "Gestures", group = GROUP_INPUT, srcPath = "gestures/GesturesScene.kt") { GesturesScene() },
+			SceneInfo(title = "Bunnymark", group = GROUP_PERFORMANCE, srcPath = "bunnymark/BunnymarkScene.kt") { BunnymarkScene() },
 		)
 
 		// Elements

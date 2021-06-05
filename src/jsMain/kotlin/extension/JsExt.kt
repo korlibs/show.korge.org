@@ -1,5 +1,7 @@
 package extension
 
+import com.soywiz.klock.*
+import com.soywiz.korag.*
 import com.soywiz.korge.view.*
 import com.soywiz.korio.async.*
 import kotlinx.browser.*
@@ -7,6 +9,7 @@ import kotlinx.coroutines.*
 import kotlinx.dom.*
 import org.w3c.dom.*
 import org.w3c.dom.events.*
+import org.w3c.fetch.*
 
 actual val ext: Ext = object : Ext() {
 	val canvasQuery by lazy { document.querySelector("#mycustomcanvas") }
@@ -66,13 +69,19 @@ actual val ext: Ext = object : Ext() {
 					editor.session.setMode("ace/mode/kotlin");
 					editor.setReadOnly(true)
 
-					launchImmediately(stage.coroutineContext) {
-						val content =
-							window.fetch("https://raw.githubusercontent.com/korlibs/show.korge.org/main/src/commonMain/kotlin/${sceneInfo.path}").await()
-								.text().await()
+					//launchImmediately(stage.coroutineContext) {
+
+					launchImmediately(stage.views.coroutineContext) {
+						delay(150.milliseconds) // Give time for the sample to start and load resources
+						val content = try {
+							window.fetch(
+								"https://raw.githubusercontent.com/korlibs/show.korge.org/main/src/commonMain/kotlin/${sceneInfo.path}",
+								jsObject("importance" to "low").unsafeCast<RequestInit>()
+							).await().text().await()
+						} catch (e: Throwable) {
+							e.message?.toString() ?: "Error"
+						}
 						editor.setValue(content, 1)
-						//editor.session.asDynamic().foldAll(2, 4)
-						//console.warn(content)
 					}
 				} catch (e: dynamic) {
 					console.error(e)
