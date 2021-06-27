@@ -66,7 +66,7 @@ class SimpleUIScene : ShowScene() {
 	}
 
 	fun Container.openPropertiesWindow() {
-		uiWindow("Properties", 200.0, 150.0) {
+		uiWindow("Properties", 400.0, 300.0) {
 			it.container.mobileBehaviour = false
 			it.container.overflowRate = 0.0
 			uiVerticalStack(300.0) {
