@@ -37,7 +37,7 @@ suspend fun main() {
 			SceneInfo(title = "Spine", group = GROUP_SKELETON, srcPath = "spine/SpineScene.kt") { SpineScene() },
 			SceneInfo(title = "Gestures", group = GROUP_INPUT, srcPath = "gestures/GesturesScene.kt") { GesturesScene() },
 			SceneInfo(title = "Bunnymark", group = GROUP_PERFORMANCE, srcPath = "bunnymark/BunnymarkScene.kt") { BunnymarkScene() },
-			SceneInfo(title = "UI", group = GROUP_UI, srcPath = "src/commonMain/kotlin/ui/SimpleUIScene.kt") { SimpleUIScene() },
+			SceneInfo(title = "UI", group = GROUP_UI, srcPath = "ui/SimpleUIScene.kt") { SimpleUIScene() },
 		)
 
 		// Elements
