@@ -16,6 +16,7 @@ import gestures.*
 import scene1.*
 import scene2.*
 import spine.*
+import ui.*
 
 suspend fun main() {
 	ext.preinit()
@@ -26,6 +27,7 @@ suspend fun main() {
 		val GROUP_SKELETON = "Skeleton"
 		val GROUP_INPUT = "Input"
 		val GROUP_PERFORMANCE = "Performance"
+		val GROUP_UI = "UI"
 		register(
 			SceneInfo(title = "Rotating Image", group = GROUP_BASICS, srcPath = "scene1/Scene1.kt") { Scene1() },
 			SceneInfo(title = "Tinting", group = GROUP_BASICS, srcPath = "scene2/Scene2.kt") { Scene2() },
@@ -35,6 +37,7 @@ suspend fun main() {
 			SceneInfo(title = "Spine", group = GROUP_SKELETON, srcPath = "spine/SpineScene.kt") { SpineScene() },
 			SceneInfo(title = "Gestures", group = GROUP_INPUT, srcPath = "gestures/GesturesScene.kt") { GesturesScene() },
 			SceneInfo(title = "Bunnymark", group = GROUP_PERFORMANCE, srcPath = "bunnymark/BunnymarkScene.kt") { BunnymarkScene() },
+			SceneInfo(title = "UI", group = GROUP_UI, srcPath = "src/commonMain/kotlin/ui/SimpleUIScene.kt") { SimpleUIScene() },
 		)
 
 		// Elements
