@@ -1,8 +1,8 @@
 package extension
 
 import com.soywiz.klock.*
-import com.soywiz.korag.*
 import com.soywiz.korge.view.*
+import com.soywiz.korio.*
 import com.soywiz.korio.async.*
 import kotlinx.browser.*
 import kotlinx.coroutines.*
