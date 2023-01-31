@@ -14,7 +14,7 @@ import kotlin.random.*
 class SimpleBox2dScene : ShowScene() {
 	val random = Random(0L)
 
-	override suspend fun Container.sceneMain() {
+	override suspend fun SContainer.sceneMain() {
 		val stage = stage!!
 		fixedSizeContainer(stage.width, stage.height) {
 			solidRect(50, 50, Colors.RED).position(400, 50).rotation(30.degrees)

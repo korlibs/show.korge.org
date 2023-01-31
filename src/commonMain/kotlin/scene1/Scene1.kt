@@ -10,7 +10,7 @@ import com.soywiz.korma.interpolation.*
 import extension.*
 
 class Scene1 : ShowScene() {
-	override suspend fun Container.sceneMain() {
+	override suspend fun SContainer.sceneMain() {
 		val minDegrees = (-16).degrees
 		val maxDegrees = (+16).degrees
 

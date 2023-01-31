@@ -1,20 +1,11 @@
 import com.soywiz.korge.gradle.*
 
-buildscript {
-	val korgePluginVersion: String by project
-
-	repositories {
-		mavenLocal()
-		mavenCentral()
-		google()
-		maven { url = uri("https://plugins.gradle.org/m2/") }
-	}
-	dependencies {
-		classpath("com.soywiz.korlibs.korge.plugins:korge-gradle-plugin:$korgePluginVersion")
-	}
+plugins {
+	//alias(libs.plugins.korge)
+	//id("com.soywiz.korge") version "4.0.0-alpha-2"
+	//id("com.soywiz.korge") version "999.0.0.999"
+	id("com.soywiz.korge") version "3.4.0"
 }
-
-apply<KorgeGradlePlugin>()
 
 korge {
 	id = "org.korge.show"
@@ -36,12 +27,11 @@ korge {
 	//targetAndroidDirect()
 
 	// Box2d
-	bundle("https://github.com/korlibs/korge-bundles.git::korge-box2d::f400451fba241e33a863cedf924ab2b673a534cb##37fb37db98214464267051ee4a9bb9a37cfc830d520552340f88ccd5fdcd4bdc")
+	//bundle("https://github.com/korlibs/korge-bundles.git::korge-box2d::f400451fba241e33a863cedf924ab2b673a534cb##37fb37db98214464267051ee4a9bb9a37cfc830d520552340f88ccd5fdcd4bdc")
 
-	supportDragonbones()
-	supportSpine()
-	supportSwf()
-	supportTriangulation()
+	//supportDragonbones()
+	//supportSpine()
+	//supportSwf()
 	supportVibration()
 }
 
@@ -58,3 +48,8 @@ sourceSetDependsOn("nonJs", "common")
 
 sourceSetDependsOn("js", "nonJvm")
 sourceSetDependsOn("jvm", "nonJs")
+
+dependencies {
+	add("commonMainApi", project(":deps"))
+}
+

@@ -9,7 +9,7 @@ import com.soywiz.korma.geom.*
 import extension.*
 
 class Scene2 : ShowScene() {
-	override suspend fun Container.sceneMain() {
+	override suspend fun SContainer.sceneMain() {
 		image(resourcesVfs["korge.png"].readBitmap()) {
 			colorMul = Colors.RED
 			rotation = 0.degrees

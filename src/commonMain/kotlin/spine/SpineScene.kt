@@ -6,13 +6,15 @@ import com.soywiz.korge.*
 import com.soywiz.korge.view.*
 import com.soywiz.korim.atlas.*
 import com.soywiz.korim.color.*
+import com.soywiz.korim.format.*
 import com.soywiz.korio.file.std.*
 import extension.*
 
 class SpineScene : ShowScene() {
-    override suspend fun Container.sceneMain() {
+    override suspend fun SContainer.sceneMain() {
         val baseVfs = resourcesVfs["spine/spineboy"]
-        val atlas = baseVfs["spineboy-pma.atlas"].readAtlas(asumePremultiplied = true)
+        //val atlas = baseVfs["spineboy-pma.atlas"].readAtlas(asumePremultiplied = true)
+        val atlas = baseVfs["spineboy-pma.atlas"].readAtlas(ImageDecodingProps.DEFAULT.copy(asumePremultiplied = true))
         val skeletonData = baseVfs["spineboy-pro.skel"].readSkeletonBinary(atlas, 0.4f)
 
         val skeleton = Skeleton(skeletonData) // Skeleton holds skeleton state (bone positions, slot attachments, etc).

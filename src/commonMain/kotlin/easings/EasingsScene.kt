@@ -11,7 +11,7 @@ import extension.*
 import kotlinx.coroutines.*
 
 class EasingsScene : ShowScene() {
-    override suspend fun Container.sceneMain() {
+    override suspend fun SContainer.sceneMain() {
         var ballTween: Job? = null
         val ball = circle(64.0, Colors.PURPLE).xy(64, 64)
 
@@ -55,14 +55,17 @@ class EasingsScene : ShowScene() {
 
         val easings = listOf(
             *Easing.ALL.values.toTypedArray(),
-            //Easing.cubic(.86, .13, .22, .84),
+            Easing.cubic(.86, .13, .22, .84),
         )
 
-        var mn = 0
-        for (my in 0 until 4) {
-            for (mx in 0 until 8) {
-                val easing = easings.getOrNull(mn++) ?: continue
-                renderEasing(easing).xy(50 + mx * 100, 300 + my * 100).addTo(this)
+        container {
+            scale = 0.9
+            var mn = 0
+            for (my in 0 until 4) {
+                for (mx in 0 until 8) {
+                    val easing = easings.getOrNull(mn++) ?: continue
+                    renderEasing(easing).xy(50 + mx * 100, 300 + my * 100).addTo(this)
+                }
             }
         }
     }

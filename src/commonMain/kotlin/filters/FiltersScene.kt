@@ -11,7 +11,7 @@ import com.soywiz.korma.interpolation.*
 import extension.*
 
 class FiltersScene : ShowScene() {
-	override suspend fun Container.sceneMain() {
+	override suspend fun SContainer.sceneMain() {
 		val bitmap = resourcesVfs["korge.png"].readBitmap()
 
 		val wave = WaveFilter()
@@ -30,7 +30,7 @@ class FiltersScene : ShowScene() {
 
 		//val color = ColorMatrixFilter(ColorMatrixFilter.GRAYSCALE_MATRIX)
 		//val color = TransitionFilter(TransitionFilter.Transition.DIAGONAL1, reversed = false)
-		val color = TransitionFilter(TransitionFilter.Transition.SWEEP, reversed = false, smooth = true)
+		val color = TransitionFilter(TransitionFilter.Transition.SWEEP, reversed = false, filtering = true)
 		//val color = TransitionFilter(TransitionFilter.Transition.CIRCULAR, reversed = false)
 		//val color = TransitionFilter(time = 1.0)
 		image(bitmap) {
@@ -59,7 +59,7 @@ class FiltersScene : ShowScene() {
 			filter = swizzle
 		}
 
-		animateParallel {
+		animate(parallel = true) {
 			sequence(looped = true) {
 				tween(wave::time[1.seconds], time = 1.seconds, easing = Easing.EASE_IN_OUT)
 				tween(wave::time[0.seconds], time = 1.seconds, easing = Easing.EASE_IN_OUT)

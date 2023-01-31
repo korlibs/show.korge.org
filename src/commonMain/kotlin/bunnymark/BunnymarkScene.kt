@@ -26,7 +26,7 @@ private class BunnyContainer(maxSize: Int) : FSprites(maxSize) {
 // https://www.goodboydigital.com/pixijs/bunnymark/
 // https://www.goodboydigital.com/pixijs/bunnymark/js/bunnyBenchMark.js
 class BunnymarkScene : ShowScene() {
-    override suspend fun Container.sceneMain() {
+    override suspend fun SContainer.sceneMain() {
         println("currentThreadId=$currentThreadId")
         delay(1.milliseconds)
         println("currentThreadId=$currentThreadId")

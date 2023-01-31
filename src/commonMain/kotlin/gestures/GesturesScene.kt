@@ -12,7 +12,7 @@ import com.soywiz.korma.interpolation.*
 import extension.*
 
 class GesturesScene : ShowScene() {
-    override suspend fun Container.sceneMain() {
+    override suspend fun SContainer.sceneMain() {
         val minDegrees = (-16).degrees
         val maxDegrees = (+16).degrees
         lateinit var image: Image

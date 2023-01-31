@@ -14,7 +14,7 @@ class SimpleUIScene : ShowScene() {
 	lateinit var font: Font
 	lateinit var solidRect: SolidRect
 
-	override suspend fun Container.sceneMain() {
+	override suspend fun SContainer.sceneMain() {
 		val container = this
 
 		font = DefaultTtfFont.toBitmapFont(16.0)
@@ -51,7 +51,7 @@ class SimpleUIScene : ShowScene() {
 				override val numItems: Int = 1000
 				override val fixedHeight: Double = 20.0
 				override fun getItemHeight(index: Int): Double = fixedHeight
-				override fun getItemView(index: Int): View = UIText(" HELLO WORLD $index")
+				override fun getItemView(index: Int, vlist: UIVerticalList): View = UIText(" HELLO WORLD $index")
 			})
 		}.centerOnStage()
 
