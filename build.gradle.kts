@@ -18,6 +18,9 @@ korge {
 	//targetDefault()
 
 // To selectively enable targets
+
+	// @TODO: Quick fix since it is generating wrong JS identifiers (files starting with numbers)
+	autoGenerateTypedResources = false
 	
 	targetJvm()
 	targetJs()
