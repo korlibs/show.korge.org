@@ -1,5 +1,6 @@
 import box2d.*
 import bunnymark.*
+import dungeon.DungeonScene
 import korlibs.datastructure.*
 import korlibs.korge.*
 import korlibs.korge.scene.*
@@ -31,6 +32,7 @@ suspend fun main() {
 		val GROUP_PERFORMANCE = "Performance"
 		val GROUP_UI = "UI"
 		val GROUP_3D = "3D"
+		val GROUP_TILEMAP = "TileMaps"
 		register(
 			SceneInfo(title = "3D", group = GROUP_3D, srcPath = "k3d/K3DScene.kt") { K3DScene() },
 			SceneInfo(title = "Rotating Image", group = GROUP_BASICS, srcPath = "scene1/Scene1.kt") { Scene1() },
@@ -43,6 +45,7 @@ suspend fun main() {
 			SceneInfo(title = "Gestures", group = GROUP_INPUT, srcPath = "gestures/GesturesScene.kt") { GesturesScene() },
 			SceneInfo(title = "Bunnymark", group = GROUP_PERFORMANCE, srcPath = "bunnymark/BunnymarkScene.kt") { BunnymarkScene() },
 			SceneInfo(title = "UI", group = GROUP_UI, srcPath = "ui/SimpleUIScene.kt") { SimpleUIScene() },
+			SceneInfo(title = "Dungeon Explorer", group = GROUP_TILEMAP, srcPath = "dungeon/DungeonScene.kt") { DungeonScene() },
 		)
 
 		// Elements

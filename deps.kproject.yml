@@ -3,3 +3,5 @@ dependencies:
 - https://github.com/korlibs/korge-dragonbones/tree/v0.0.5/korge-dragonbones##e82e3f49753f6231532c44d9b5cfda03660098a0
 - https://github.com/korlibs/korge-box2d/tree/0.0.2/korge-box2d##888a28de45cc72270bb02a43e09acc40f82d956c
 - https://github.com/korlibs/korge-k3d/tree/v0.0.3/korge-k3d##f1fb3c4db97c87b9543e14cf6788dd6dd6b6b931
+- https://github.com/korlibs/korge-ldtk/tree/v0.0.4/korge-ldtk##a4e753a009531dc1206b421f8bd9eeee0274a126
+- https://github.com/korlibs/korge-virtualcontroller/tree/0.0.4/korge-virtualcontroller##2e465059da35e9fb813ae87f40e6a11f68152cf7
