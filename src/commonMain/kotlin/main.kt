@@ -11,6 +11,7 @@ import easings.*
 import extension.*
 import filters.*
 import gestures.*
+import k3d.K3DScene
 import korlibs.math.geom.Size
 import korlibs.memory.Platform
 import korlibs.render.GameWindow
@@ -29,7 +30,9 @@ suspend fun main() {
 		val GROUP_INPUT = "Input"
 		val GROUP_PERFORMANCE = "Performance"
 		val GROUP_UI = "UI"
+		val GROUP_3D = "3D"
 		register(
+			SceneInfo(title = "3D", group = GROUP_3D, srcPath = "k3d/K3DScene.kt") { K3DScene() },
 			SceneInfo(title = "Rotating Image", group = GROUP_BASICS, srcPath = "scene1/Scene1.kt") { Scene1() },
 			SceneInfo(title = "Tinting", group = GROUP_BASICS, srcPath = "scene2/Scene2.kt") { Scene2() },
 			SceneInfo(title = "Easing", group = GROUP_BASICS, srcPath = "easings/EasingsScene.kt") { EasingsScene() },
