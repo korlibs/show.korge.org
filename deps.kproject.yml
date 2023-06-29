@@ -1,5 +1,5 @@
 dependencies:
-- https://github.com/korlibs/korge-spine/tree/0.0.1/korge-spine##a9ba3d08ae8ad9fc116bfecd0cc1d115782a6194
+- https://github.com/korlibs/korge-spine/tree/v0.0.3/korge-spine##397698e8da9b8d790fb7b99146a1687da74fa3f0
 - https://github.com/korlibs/korge-dragonbones/tree/v0.0.5/korge-dragonbones##e82e3f49753f6231532c44d9b5cfda03660098a0
 - https://github.com/korlibs/korge-box2d/tree/0.0.2/korge-box2d##888a28de45cc72270bb02a43e09acc40f82d956c
 - https://github.com/korlibs/korge-k3d/tree/v0.0.3/korge-k3d##f1fb3c4db97c87b9543e14cf6788dd6dd6b6b931
