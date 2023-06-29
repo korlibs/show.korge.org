@@ -1,13 +1,13 @@
 package filters
 
-import com.soywiz.klock.*
-import com.soywiz.korge.animate.*
-import com.soywiz.korge.tween.*
-import com.soywiz.korge.view.*
-import com.soywiz.korge.view.filter.*
-import com.soywiz.korim.format.*
-import com.soywiz.korio.file.std.*
-import com.soywiz.korma.interpolation.*
+import korlibs.time.*
+import korlibs.korge.animate.*
+import korlibs.korge.tween.*
+import korlibs.korge.view.*
+import korlibs.korge.view.filter.*
+import korlibs.image.format.*
+import korlibs.io.file.std.*
+import korlibs.math.interpolation.*
 import extension.*
 
 class FiltersScene : ShowScene() {

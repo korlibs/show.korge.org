@@ -1,30 +1,31 @@
 package easings
 
-import com.soywiz.korge.input.*
-import com.soywiz.korge.tween.*
-import com.soywiz.korge.view.*
-import com.soywiz.korim.color.*
-import com.soywiz.korim.vector.*
-import com.soywiz.korma.geom.vector.*
-import com.soywiz.korma.interpolation.*
+import korlibs.korge.input.*
+import korlibs.korge.tween.*
+import korlibs.korge.view.*
+import korlibs.image.color.*
+import korlibs.image.vector.*
+import korlibs.math.geom.vector.*
+import korlibs.math.interpolation.*
 import extension.*
+import korlibs.math.geom.Point
 import kotlinx.coroutines.*
 
 class EasingsScene : ShowScene() {
     override suspend fun SContainer.sceneMain() {
         var ballTween: Job? = null
-        val ball = circle(64.0, Colors.PURPLE).xy(64, 64)
+        val ball = circle(64f, Colors.PURPLE).xy(64, 64)
 
         fun renderEasing(easing: Easing): View {
             return Container().apply {
                 val bg = solidRect(64, -64, Colors.BLACK.withAd(0.2))
                 //graphics(renderer = GraphicsRenderer.SYSTEM) { shape ->
                 graphics {
-                    stroke(Colors.RED, StrokeInfo(thickness = 4.0)) {
-                        this.line(0.0, 0.0, 0.0, -64.0)
-                        this.line(0.0, 0.0, 64.0, 0.0)
+                    stroke(Colors.RED, StrokeInfo(thickness = 4f)) {
+                        this.line(Point(0, 0), Point(0.0, -64.0))
+                        this.line(Point(0, 0), Point(64.0, 0.0))
                     }
-                    stroke(Colors.WHITE, StrokeInfo(thickness = 2.0)) {
+                    stroke(Colors.WHITE, StrokeInfo(thickness = 2f)) {
                         var first = true
                         //val overflow = 8
                         val overflow = 0
@@ -43,7 +44,7 @@ class EasingsScene : ShowScene() {
                     }
                 }.addTo(this)
                 val textSize = 10.0
-                text("$easing", textSize = textSize).xy(0.0, textSize)
+                text("$easing", textSize = textSize.toFloat()).xy(0.0, textSize)
                 onOver { bg.color = Colors.BLACK.withAd(1.0) }
                 onOut { bg.color = Colors.BLACK.withAd(0.2) }
                 onClick {
@@ -59,7 +60,7 @@ class EasingsScene : ShowScene() {
         )
 
         container {
-            scale = 0.9
+            scaleAvg = 0.9f
             var mn = 0
             for (my in 0 until 4) {
                 for (mx in 0 until 8) {

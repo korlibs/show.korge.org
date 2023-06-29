@@ -1,28 +1,20 @@
 package dragonbones
 
 import com.dragonbones.event.*
-import com.soywiz.kds.*
-import com.soywiz.klock.*
-import com.soywiz.korge.dragonbones.*
-import com.soywiz.korge.input.*
-import com.soywiz.korge.scene.*
-import com.soywiz.korge.scene.delay
-import com.soywiz.korge.time.*
-import com.soywiz.korge.view.*
-import com.soywiz.korge.view.onClick
-import com.soywiz.korge.view.roundRect
-import com.soywiz.korgw.*
-import com.soywiz.korim.bitmap.*
-import com.soywiz.korim.color.*
-import com.soywiz.korim.format.*
-import com.soywiz.korinject.*
-import com.soywiz.korio.async.*
-import com.soywiz.korio.file.std.*
-import com.soywiz.korio.lang.*
-import com.soywiz.korio.serialization.json.*
-import com.soywiz.korma.geom.*
-import com.soywiz.korma.geom.vector.*
-import com.soywiz.korma.random.*
+import korlibs.time.*
+import korlibs.korge.dragonbones.*
+import korlibs.korge.input.*
+import korlibs.korge.scene.*
+import korlibs.korge.time.*
+import korlibs.korge.view.*
+import korlibs.image.bitmap.*
+import korlibs.image.color.*
+import korlibs.image.format.*
+import korlibs.io.async.*
+import korlibs.io.file.std.*
+import korlibs.io.serialization.json.*
+import korlibs.math.geom.*
+import korlibs.math.random.*
 import extension.*
 import kotlinx.coroutines.*
 import kotlin.math.*
@@ -75,8 +67,8 @@ private class MyScene : MyBaseScene() {
         //}
 
         val mySceneContainer = sceneContainer(views) {
-            this.x = views.virtualWidth.toDouble() * 0.5
-            this.y = views.virtualHeight.toDouble() * 0.5
+            this.x = views.virtualWidth.toFloat() * 0.5f
+            this.y = views.virtualHeight.toFloat() * 0.5f
         }
         buttonContainer = this
         this += Button("Hello") {
@@ -160,8 +152,8 @@ private class ClassicDragonScene : BaseDbScene() {
 
 
 private class EyeTrackingScene : BaseDbScene() {
-    val scale = 0.46
-    var totalTime = 0.0
+    val scale = 0.46f
+    var totalTime = 0.0f
 
     override suspend fun SContainer.sceneInit() {
         try {
@@ -206,18 +198,20 @@ private class EyeTrackingScene : BaseDbScene() {
             //armatureDisplay.play("idle_00")
             armatureDisplay.animation.play("idle_00")
 
-            val target = Point()
-            val ftarget = Point()
+            var target = Point()
+            var ftarget = Point()
 
             mouse {
                 moveAnywhere {
-                    ftarget.x = (localMouseX(views) - armatureDisplay.x) / this@EyeTrackingScene.scale
-                    ftarget.y = (localMouseY(views) - armatureDisplay.y) / this@EyeTrackingScene.scale
+                    val lm = localMousePos(views)
+                    ftarget = (lm - armatureDisplay.pos) / this@EyeTrackingScene.scale
                     //println(":" + localMouseXY(views) + ", " + target + " :: ${armatureDisplay.x}, ${armatureDisplay.y} :: ${this@EyeTrackingScene.scale}")
                 }
                 exit {
-                    ftarget.x = armatureDisplay.x / this@EyeTrackingScene.scale
-                    ftarget.y = (armatureDisplay.y - 650) / this@EyeTrackingScene.scale
+                    ftarget = Point(
+                        armatureDisplay.x / this@EyeTrackingScene.scale,
+                        (armatureDisplay.y - 650) / this@EyeTrackingScene.scale
+                    )
                     //println(":onExit:" + " :: $target :: ${armatureDisplay.x}, ${armatureDisplay.y} :: ${this@EyeTrackingScene.scale}")
                 }
             }
@@ -227,14 +221,13 @@ private class EyeTrackingScene : BaseDbScene() {
                 val bendRatio = 0.75
                 val ibendRatio = 1.0 - bendRatio
                 while (true) {
-                    target.x = (target.x * bendRatio + ftarget.x * ibendRatio)
-                    target.y = (target.y * bendRatio + ftarget.y * ibendRatio)
+                    target = target * bendRatio + ftarget * ibendRatio
                     delay(16.milliseconds)
                 }
             }
 
             addUpdater {
-                totalTime += it.milliseconds
+                totalTime += it.milliseconds.toFloat()
 
                 val armature = armatureDisplay.armature
                 val animation = armatureDisplay.animation
@@ -405,12 +398,13 @@ private abstract class BaseDbScene : MyBaseScene() {
 }
 
 private class Button(text: String, handler: suspend () -> Unit) : Container() {
-    val textField = TextOld(text, textSize = 32.0).apply { filtering = false }
+    //val textField = TextOld(text, textSize = 32.0).apply { filtering = false }
+    val textField = Text(text, textSize = 32f).apply { smoothing = false }
     private val bounds = textField.textBounds
     val g = Graphics().apply {
         updateShape {
             fill(Colors.DARKGREY, 0.7) {
-                roundRect(bounds.x, bounds.y, bounds.width + 16, bounds.height + 16, 8.0, 8.0)
+                roundRect(RoundRectangle(Rectangle(bounds.x, bounds.y, bounds.width + 16, bounds.height + 16), RectCorners(8.0, 8.0)))
             }
         }
     }
@@ -427,9 +421,9 @@ private class Button(text: String, handler: suspend () -> Unit) : Container() {
 
     fun updateState() {
         when {
-            !enabledButton -> alpha = 0.3
-            overButton -> alpha = 1.0
-            else -> alpha = 0.8
+            !enabledButton -> alpha = 0.3f
+            overButton -> alpha = 1.0f
+            else -> alpha = 0.8f
         }
     }
 

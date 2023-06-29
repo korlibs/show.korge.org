@@ -1,22 +1,23 @@
 package bunnymark
 
-import com.soywiz.klock.*
-import com.soywiz.kmem.*
-import com.soywiz.korge.input.*
-import com.soywiz.korge.view.*
-import com.soywiz.korge.view.fast.*
-import com.soywiz.korim.bitmap.*
-import com.soywiz.korim.bitmap.effect.*
-import com.soywiz.korim.font.*
-import com.soywiz.korim.format.*
-import com.soywiz.korio.async.*
-import com.soywiz.korio.file.std.*
-import com.soywiz.korio.lang.*
+import korlibs.time.*
+import korlibs.korge.input.*
+import korlibs.korge.view.*
+import korlibs.korge.view.fast.*
+import korlibs.image.bitmap.*
+import korlibs.image.bitmap.effect.*
+import korlibs.image.font.*
+import korlibs.image.format.*
+import korlibs.io.async.*
+import korlibs.io.file.std.*
+import korlibs.io.lang.*
 import extension.*
+import korlibs.memory.Buffer
+import korlibs.memory.f32
 import kotlin.random.*
 
 private class BunnyContainer(maxSize: Int) : FSprites(maxSize) {
-    val speeds = FBuffer(maxSize * Float.SIZE_BYTES * 2).f32
+    val speeds = Buffer(maxSize * Float.SIZE_BYTES * 2).f32
     var FSprite.speedXf: Float get() = speeds[index * 2 + 0] ; set(value) { speeds[index * 2 + 0] = value }
     var FSprite.speedYf: Float get() = speeds[index * 2 + 1] ; set(value) { speeds[index * 2 + 1] = value }
     //var FSprite.tex: BmpSlice
@@ -54,10 +55,10 @@ class BunnymarkScene : ShowScene() {
 
         val font = DefaultTtfFont.toBitmapFont(
             chars = CharacterSet.LOWERCASE + CharacterSet.UPPERCASE + CharacterSet.NUMBERS + CharacterSet.PUNCTUATION + CharacterSet.SPACE,
-            fontSize = 16.0,
+            fontSize = 16f,
             effect = BitmapEffect(dropShadowX = 1, dropShadowY = 1, dropShadowRadius = 1)
         )
-        val bunnyCountText = text("", font = font, textSize = 16.0, alignment = com.soywiz.korim.text.TextAlignment.TOP_LEFT).position(32.0, 32.0)
+        val bunnyCountText = text("", font = font, textSize = 16f, alignment = korlibs.image.text.TextAlignment.TOP_LEFT).position(32.0, 32.0)
 
 
         val random = Random(0)

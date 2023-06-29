@@ -1,5 +1,5 @@
 #name: deps
 dependencies:
-    - git::korge-spine::korlibs/korge-spine::/korge-spine::a2547c3740c5df4fb1b14da6c8c30a03d7dbd8cf
-    - git::korge-dragonbones::korlibs/korge-dragonbones::/korge-dragonbones::7e8ef419eef9c62d4fa1df59a2f215622f3f4624
-    - git::korge-box2d::korlibs/korge-box2d::/korge-box2d::95d2b424de9803fd49ff392b1e6cb5bb6db20661
+- https://github.com/korlibs/korge-spine/tree/0.0.1/korge-spine##a9ba3d08ae8ad9fc116bfecd0cc1d115782a6194
+- https://github.com/korlibs/korge-dragonbones/tree/v0.0.5/korge-dragonbones##e82e3f49753f6231532c44d9b5cfda03660098a0
+- https://github.com/korlibs/korge-box2d/tree/0.0.2/korge-box2d##888a28de45cc72270bb02a43e09acc40f82d956c

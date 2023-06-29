@@ -1,14 +1,18 @@
 package ui
 
-import com.soywiz.klock.*
-import com.soywiz.korge.input.*
-import com.soywiz.korge.tween.*
-import com.soywiz.korge.ui.*
-import com.soywiz.korge.view.*
-import com.soywiz.korim.color.*
-import com.soywiz.korim.font.*
-import com.soywiz.korma.geom.*
+import korlibs.time.*
+import korlibs.korge.input.*
+import korlibs.korge.tween.*
+import korlibs.korge.ui.*
+import korlibs.korge.view.*
+import korlibs.image.color.*
+import korlibs.image.font.*
+import korlibs.math.geom.*
 import extension.*
+import korlibs.korge.style.styles
+import korlibs.korge.style.textColor
+import korlibs.korge.style.textFont
+import korlibs.korge.view.align.centerOnStage
 
 class SimpleUIScene : ShowScene() {
 	lateinit var font: Font
@@ -17,16 +21,16 @@ class SimpleUIScene : ShowScene() {
 	override suspend fun SContainer.sceneMain() {
 		val container = this
 
-		font = DefaultTtfFont.toBitmapFont(16.0)
+		font = DefaultTtfFont.toBitmapFont(16f)
 		solidRect = solidRect(100, 100, Colors["#700ec7"]).position(200.0, 100.0).centered
 
-		uiVerticalStack(width = 150.0) {
-			uiButton(text = "Open Window List") {
+		uiVerticalStack(width = 150f) {
+			uiButton(label = "Open Window List") {
 				onClick {
 					container.openLazyLongListWindow()
 				}
 			}
-			uiButton(text = "Open Properties") {
+			uiButton(label = "Open Properties") {
 				onClick {
 					container.openPropertiesWindow()
 				}
@@ -37,20 +41,18 @@ class SimpleUIScene : ShowScene() {
 
 		uiWindow("Scrollable") {
 			for (n in 0 until 10) {
-				uiButton(text = "Hello $n").position(n * 32, n * 32)
+				uiButton(label = "Hello $n").position(n * 32, n * 32)
 			}
 		}.centerOnStage()
 	}
 
 	fun Container.openLazyLongListWindow() {
 		val window = uiWindow("Lazy long list") {
-			uiSkin = UISkin {
-				this.textFont = font
-			}
+			styles.textFont = font
 			uiVerticalList(object : UIVerticalList.Provider {
 				override val numItems: Int = 1000
-				override val fixedHeight: Double = 20.0
-				override fun getItemHeight(index: Int): Double = fixedHeight
+				override val fixedHeight: Float = 20f
+				override fun getItemHeight(index: Int): Float = fixedHeight
 				override fun getItemView(index: Int, vlist: UIVerticalList): View = UIText(" HELLO WORLD $index")
 			})
 		}.centerOnStage()
@@ -66,16 +68,18 @@ class SimpleUIScene : ShowScene() {
 	}
 
 	fun Container.openPropertiesWindow() {
-		uiWindow("Properties", 400.0, 300.0) {
+		uiWindow("Properties", Size(400, 300)) {
 			it.container.mobileBehaviour = false
-			it.container.overflowRate = 0.0
-			uiVerticalStack(300.0) {
-				uiText("Properties") { textColor = Colors.RED }
+			it.container.overflowRate = 0f
+			uiVerticalStack(300f) {
+				uiText("Properties").also {
+					it.styles.textColor = Colors.RED
+				}
 				//append(UIPropertyRow("Name")) { container.uiTextInput(solidRect.name ?: "") }
 				uiPropertyNumberRow("Alpha", *UIEditableNumberPropsList(solidRect::alpha))
-				uiPropertyNumberRow("Position", *UIEditableNumberPropsList(solidRect::x, solidRect::y, min = -1024.0, max = +1024.0, clamped = false))
-				uiPropertyNumberRow("Size", *UIEditableNumberPropsList(solidRect::width, solidRect::height, min = -1024.0, max = +1024.0, clamped = false))
-				uiPropertyNumberRow("Scale", *UIEditableNumberPropsList(solidRect::scaleX, solidRect::scaleY, min = -1.0, max = +1.0, clamped = false))
+				uiPropertyNumberRow("Position", *UIEditableNumberPropsList(solidRect::x, solidRect::y, min = -1024f, max = +1024f, clamped = false))
+				uiPropertyNumberRow("Size", *UIEditableNumberPropsList(solidRect::width, solidRect::height, min = -1024f, max = +1024f, clamped = false))
+				uiPropertyNumberRow("Scale", *UIEditableNumberPropsList(solidRect::scaleX, solidRect::scaleY, min = -1f, max = +1f, clamped = false))
 				uiPropertyNumberRow("Rotation", *UIEditableNumberPropsList(solidRect::rotationDeg, min = -360.0, max = +360.0, clamped = true))
 				val skewProp = uiPropertyNumberRow("Skew", *UIEditableNumberPropsList(solidRect::skewXDeg, solidRect::skewYDeg, min = -360.0, max = +360.0, clamped = true))
 				append(UIPropertyRow("Visible")) {
@@ -94,13 +98,13 @@ class SimpleUIScene : ShowScene() {
 }
 
 private var View.rotationDeg: Double
-	get() = rotation.degrees
+	get() = rotation.degrees.toDouble()
 	set(value) { rotation = value.degrees }
 
 private var View.skewXDeg: Double
-	get() = skewX.degrees
+	get() = skewX.degrees.toDouble()
 	set(value) { skewX = value.degrees }
 
 private var View.skewYDeg: Double
-	get() = skewY.degrees
+	get() = skewY.degrees.toDouble()
 	set(value) { skewY = value.degrees }

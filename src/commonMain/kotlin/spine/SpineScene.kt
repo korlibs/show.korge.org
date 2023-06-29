@@ -2,12 +2,12 @@ package spine
 
 import com.esotericsoftware.spine.*
 import com.esotericsoftware.spine.korge.*
-import com.soywiz.korge.*
-import com.soywiz.korge.view.*
-import com.soywiz.korim.atlas.*
-import com.soywiz.korim.color.*
-import com.soywiz.korim.format.*
-import com.soywiz.korio.file.std.*
+import korlibs.korge.*
+import korlibs.korge.view.*
+import korlibs.image.atlas.*
+import korlibs.image.color.*
+import korlibs.image.format.*
+import korlibs.io.file.std.*
 import extension.*
 
 class SpineScene : ShowScene() {
@@ -40,7 +40,7 @@ class SpineScene : ShowScene() {
         // Add view
         container {
             //speed = 2.0
-            speed = 1.0
+            speed = 1.0f
             scale(2.0)
             position(views.virtualWidth * 0.5, views.virtualHeight * 0.9)
             skeletonView(skeleton, state)

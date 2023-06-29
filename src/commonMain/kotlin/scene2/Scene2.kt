@@ -1,11 +1,11 @@
 package scene2
 
-import com.soywiz.korge.input.*
-import com.soywiz.korge.view.*
-import com.soywiz.korim.color.*
-import com.soywiz.korim.format.*
-import com.soywiz.korio.file.std.*
-import com.soywiz.korma.geom.*
+import korlibs.korge.input.*
+import korlibs.korge.view.*
+import korlibs.image.color.*
+import korlibs.image.format.*
+import korlibs.io.file.std.*
+import korlibs.math.geom.*
 import extension.*
 
 class Scene2 : ShowScene() {
@@ -16,10 +16,10 @@ class Scene2 : ShowScene() {
 			anchor(.5, .5)
 			scale(.8)
 			position(400, 300)
-			alpha = 0.5
+			alpha = 0.5f
 			mouse {
-				onOver { alpha = 1.0 }
-				onOut { alpha = 0.5 }
+				onOver { alpha = 1.0f }
+				onOut { alpha = 0.5f }
 			}
 		}
 	}

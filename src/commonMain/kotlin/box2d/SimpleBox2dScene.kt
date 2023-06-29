@@ -1,13 +1,15 @@
 package box2d
 
-import com.soywiz.korge.box2d.*
-import com.soywiz.korge.input.*
-import com.soywiz.korge.ui.*
-import com.soywiz.korge.view.*
-import com.soywiz.korim.color.*
-import com.soywiz.korma.geom.*
-import com.soywiz.korma.random.*
+import korlibs.korge.box2d.*
+import korlibs.korge.input.*
+import korlibs.korge.ui.*
+import korlibs.korge.view.*
+import korlibs.image.color.*
+import korlibs.math.geom.*
+import korlibs.math.random.*
 import extension.*
+import korlibs.math.interpolation.interpolate
+import korlibs.math.interpolation.toRatio
 import org.jbox2d.dynamics.*
 import kotlin.random.*
 
@@ -16,7 +18,7 @@ class SimpleBox2dScene : ShowScene() {
 
 	override suspend fun SContainer.sceneMain() {
 		val stage = stage!!
-		fixedSizeContainer(stage.width, stage.height) {
+		fixedSizeContainer(Size(stage.width, stage.height)) {
 			solidRect(50, 50, Colors.RED).position(400, 50).rotation(30.degrees)
 				.registerBodyWithFixture(type = BodyType.DYNAMIC, density = 2, friction = 0.01)
 			solidRect(50, 50, Colors.RED).position(300, 100).registerBodyWithFixture(type = BodyType.DYNAMIC)
@@ -36,11 +38,11 @@ class SimpleBox2dScene : ShowScene() {
 					.registerBodyWithFixture(type = BodyType.DYNAMIC)
 			}
 
-			uiButton(text = "Reset").position(stage.width - 128.0, 0.0).onClick { sceneContainer.changeTo(this@SimpleBox2dScene::class) }
+			uiButton(label = "Reset").position(stage.width - 128.0, 0.0).onClick { sceneContainer.changeTo(this@SimpleBox2dScene::class) }
 		}
 	}
 
 	// @TODO: Will be available on the next version of korma
-	private fun Random.nextDoubleInclusive() = (this.nextInt(0x1000001).toDouble() / 0x1000000.toDouble())
-	private operator fun Random.get(l: Angle, r: Angle): Angle = this.nextDoubleInclusive().interpolate(l, r)
+	private fun Random.nextDoubleInclusive(): Double = (this.nextInt(0x1000001).toDouble() / 0x1000000.toDouble())
+	private operator fun Random.get(l: Angle, r: Angle): Angle = this.nextDoubleInclusive().toRatio().interpolateAngle(l, r)
 }

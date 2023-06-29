@@ -1,10 +1,10 @@
 package extension
 
-import com.soywiz.kds.*
-import com.soywiz.korge.scene.*
-import com.soywiz.korge.view.*
-import com.soywiz.korinject.*
-import com.soywiz.korio.lang.*
+import korlibs.datastructure.*
+import korlibs.inject.AsyncInjector
+import korlibs.korge.scene.*
+import korlibs.korge.view.*
+import korlibs.io.lang.*
 import kotlin.reflect.*
 
 expect val ext: Ext

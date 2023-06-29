@@ -1,9 +1,9 @@
 package extension
 
-import com.soywiz.klock.*
-import com.soywiz.korge.view.*
-import com.soywiz.korio.*
-import com.soywiz.korio.async.*
+import korlibs.time.*
+import korlibs.korge.view.*
+import korlibs.io.*
+import korlibs.io.async.*
 import kotlinx.browser.*
 import kotlinx.coroutines.*
 import kotlinx.dom.*

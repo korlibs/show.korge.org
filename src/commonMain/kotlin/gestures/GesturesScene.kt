@@ -1,14 +1,14 @@
 package gestures
 
-import com.soywiz.klock.*
-import com.soywiz.korge.input.*
-import com.soywiz.korge.tween.*
-import com.soywiz.korge.ui.*
-import com.soywiz.korge.view.*
-import com.soywiz.korim.format.*
-import com.soywiz.korio.file.std.*
-import com.soywiz.korma.geom.*
-import com.soywiz.korma.interpolation.*
+import korlibs.time.*
+import korlibs.korge.input.*
+import korlibs.korge.tween.*
+import korlibs.korge.ui.*
+import korlibs.korge.view.*
+import korlibs.image.format.*
+import korlibs.io.file.std.*
+import korlibs.math.geom.*
+import korlibs.math.interpolation.*
 import extension.*
 
 class GesturesScene : ShowScene() {
@@ -29,13 +29,13 @@ class GesturesScene : ShowScene() {
         text("Zoom and rotate with two fingers")
 
         touch {
-            var startImageRatio = 1.0
+            var startImageRatio = 1.0f
             var startRotation = 0.degrees
 
             scaleRecognizer(start = {
-                startImageRatio = image.scale
+                startImageRatio = image.scaleAvg
             }) {
-                image.scale = startImageRatio * this.ratio
+                image.scaleAvg = startImageRatio * this.ratio
             }
 
             rotationRecognizer(start = {
@@ -47,7 +47,7 @@ class GesturesScene : ShowScene() {
 
         image.mouse {
             click {
-                image.alpha = if (image.alpha > 0.5) 0.5 else 1.0
+                image.alpha = if (image.alpha > 0.5) 0.5f else 1.0f
             }
         }
 
@@ -55,16 +55,16 @@ class GesturesScene : ShowScene() {
             println(views.input.activeTouches)
         }
 
-        uiButton(text = "1") {
+        uiButton(label = "1") {
             position(10, 380)
             onPress { println("TAPPED ON 1") }
         }
-        uiButton(text = "2") {
+        uiButton(label = "2") {
             position(150, 380)
             onPress { println("TAPPED ON 2") }
         }
 
-        uiButton(text = "3") {
+        uiButton(label = "3") {
             position(300, 380)
             onPress { println("TAPPED ON 3") }
         }

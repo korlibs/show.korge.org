@@ -1,19 +1,19 @@
 import box2d.*
 import bunnymark.*
-import com.soywiz.kds.*
-import com.soywiz.korge.*
-import com.soywiz.korge.scene.*
-import com.soywiz.korge.ui.*
-import com.soywiz.korge.view.*
-import com.soywiz.korgw.*
-import com.soywiz.korim.color.*
-import com.soywiz.korio.async.*
-import com.soywiz.korio.util.*
-import dragonbones.*
+import korlibs.datastructure.*
+import korlibs.korge.*
+import korlibs.korge.scene.*
+import korlibs.korge.ui.*
+import korlibs.korge.view.*
+import korlibs.image.color.*
+import korlibs.io.async.*
 import easings.*
 import extension.*
 import filters.*
 import gestures.*
+import korlibs.math.geom.Size
+import korlibs.memory.Platform
+import korlibs.render.GameWindow
 import scene1.*
 import scene2.*
 import spine.*
@@ -21,7 +21,7 @@ import ui.*
 
 suspend fun main() {
 	ext.preinit()
-	Korge(title = "KorGE Web Samples", width = 800, height = 600, bgcolor = Colors["#2b2b2b"], quality = GameWindow.Quality.PERFORMANCE) {
+	Korge(title = "KorGE Web Samples", virtualSize = Size(800, 600), backgroundColor = Colors["#2b2b2b"], quality = GameWindow.Quality.PERFORMANCE) {
 		val GROUP_BASICS = "Basics"
 		val GROUP_ADVANCED = "Advanced"
 		val GROUP_PHYSICS = "Physics"
@@ -46,7 +46,7 @@ suspend fun main() {
 		run {
 			this.mainSceneContainer = sceneContainer()
 			//ext.hasExternalLayout
-			if (!OS.isJs) {
+			if (!Platform.isJs) {
 				uiComboBox(items = registeredScenes.values.toList()).onSelectionUpdate {
 					launchImmediately {
 						changeToScene(stage, it.selectedItem?.className)
