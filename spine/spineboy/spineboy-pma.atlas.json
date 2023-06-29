@@ -1,0 +1,35 @@
+{
+  "frames": {
+    "": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 1005,
+        "h": 252
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 1005,
+        "h": 252
+      },
+      "sourceSize": {
+        "w": 1024,
+        "h": 256
+      }
+    }
+  },
+  "meta": {
+    "app": "https://korge.org/",
+    "version": "4.0.7",
+    "image": "spineboy-pma.atlas.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1024,
+      "h": 256
+    },
+    "scale": 1
+  }
+}
