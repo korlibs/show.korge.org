@@ -4,7 +4,7 @@ plugins {
 	//alias(libs.plugins.korge)
 	//id("com.soywiz.korge") version "4.0.0-alpha-2"
 	//id("com.soywiz.korge") version "999.0.0.999"
-	id("com.soywiz.korge") version "4.0.6"
+	id("com.soywiz.korge") version "4.0.7"
 }
 
 korge {
