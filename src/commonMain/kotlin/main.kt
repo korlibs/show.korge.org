@@ -23,7 +23,13 @@ import ui.*
 
 suspend fun main() {
 	ext.preinit()
-	Korge(title = "KorGE Web Samples", virtualSize = Size(800, 600), backgroundColor = Colors["#2b2b2b"], quality = GameWindow.Quality.PERFORMANCE) {
+	Korge(
+		title = "KorGE Web Samples",
+		virtualSize = Size(800, 600),
+		backgroundColor = Colors["#2b2b2b"],
+		quality = GameWindow.Quality.PERFORMANCE
+		//quality = GameWindow.Quality.QUALITY
+	) {
 		val GROUP_BASICS = "Basics"
 		val GROUP_ADVANCED = "Advanced"
 		val GROUP_PHYSICS = "Physics"
