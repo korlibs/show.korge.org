@@ -36,7 +36,7 @@ class K3DScene : ShowScene() {
             camera = Camera3D.Perspective()
             axisLines(length = 4f)
 
-            val centerPointAxisLines = axisLines(length = .2f)
+            val centerPointAxisLines = axisLines2(length = .2f)
 
             val quat = Quaternion.IDENTITY
 
@@ -194,7 +194,7 @@ fun <T : View3D> T.orbitAround(t: Vector3, distance: Float, azimuth: Angle, elev
     //return this
 }
 
-fun Container3D.axisLines(basePosition: Vector3 = Vector3.ZERO, length: Float = 10f, lengthWhiteScale: Float = .25f): Container3D {
+fun Container3D.axisLines2(basePosition: Vector3 = Vector3.ZERO, length: Float = 10f, lengthWhiteScale: Float = .25f): Container3D {
     val ll = length
     val l2 = length * lengthWhiteScale
     return container3D {
