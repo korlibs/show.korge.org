@@ -61,6 +61,18 @@ inline fun <reified T : ShowScene> SceneInfo(
 
 val Stage.registeredScenes by extraProperty { LinkedHashMap<String, SceneInfo<out ShowScene>>() }
 
+abstract class AutoShowScene : ShowScene() {
+	final override suspend fun SContainer.sceneMain() {
+		showSpinner()
+		try {
+			main()
+		} finally {
+			hideSpinner()
+		}
+	}
+
+	abstract suspend fun SContainer.main()
+}
 
 abstract class ShowScene : Scene() {
 	private var spinner: Graphics? = null

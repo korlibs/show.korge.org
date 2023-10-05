@@ -10,8 +10,8 @@ import korlibs.image.format.*
 import korlibs.io.file.std.*
 import extension.*
 
-class SpineScene : ShowScene() {
-    override suspend fun SContainer.sceneMain() {
+class SpineScene : AutoShowScene() {
+    override suspend fun SContainer.main() {
         val baseVfs = resourcesVfs["spine/spineboy"]
         //val atlas = baseVfs["spineboy-pma.atlas"].readAtlas(asumePremultiplied = true)
         val atlas = baseVfs["spineboy-pma.atlas"].readAtlas(ImageDecodingProps.DEFAULT.copy(asumePremultiplied = true))
