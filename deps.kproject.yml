@@ -5,4 +5,4 @@ dependencies:
 - https://github.com/korlibs/korge-box2d/tree/v0.1.1/korge-box2d##5d3ead41419d3072d3ba7d470f92f0fd7290205c
 - https://github.com/korlibs/korge-ldtk/tree/v1.0.1/korge-ldtk##1449331b57dc2828b686a0fc3b120b45ddaa0973
 - https://github.com/korlibs/korge-k3d/tree/v0.0.4/korge-k3d##93252fd5dc83c2626113ebc1b5e910990ab27a35
-- https://github.com/korlibs/korge-swf/tree/v1.0.1/korge-swf##9480f5edff10c2ff3daed2f5f67e0d5c937a6c23
+- https://github.com/korlibs/korge-swf/tree/v1.0.2/korge-swf##36d311f07188a23370339e23740882d6faab2ebd
