@@ -1,6 +1,6 @@
 package k3d
 
-import extension.ShowScene
+import extension.*
 import korlibs.event.DropFileEvent
 import korlibs.event.Key
 import korlibs.image.color.Colors
@@ -23,10 +23,10 @@ import korlibs.render.openFileDialog
 import korlibs.time.measureTimeWithResult
 import korlibs.time.milliseconds
 
-class K3DScene : ShowScene() {
+class K3DScene : AutoShowScene() {
     lateinit var dropFileRect: SolidRect
 
-    override suspend fun SContainer.sceneMain() {
+    override suspend fun SContainer.main() {
         var rotationY = 0.degrees
         var rotationX = Angle.QUARTER
         var cameraDistance = 10f
