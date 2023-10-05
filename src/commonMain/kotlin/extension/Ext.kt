@@ -1,10 +1,13 @@
 package extension
 
 import korlibs.datastructure.*
+import korlibs.image.color.*
 import korlibs.inject.*
 import korlibs.korge.scene.*
 import korlibs.korge.view.*
 import korlibs.io.lang.*
+import korlibs.math.geom.*
+import korlibs.time.*
 import kotlin.reflect.*
 
 expect val ext: Ext
@@ -60,4 +63,23 @@ val Stage.registeredScenes by extraProperty { LinkedHashMap<String, SceneInfo<ou
 
 
 abstract class ShowScene : Scene() {
+	private var spinner: Graphics? = null
+
+	fun SContainer.showSpinner() {
+		hideSpinner()
+		spinner = graphics {
+			stroke(Colors.WHITE, lineWidth = 6.0) {
+				arc(Point(0, 0), 48.0, 0.degrees, 60.degrees)
+				arc(Point(0, 0), 48.0, 180.degrees, (180 + 60).degrees)
+			}
+		}.position(width * 0.5, height * 0.5)
+		spinner!!.addUpdater { rotation += (it.seconds * 100).degrees }
+	}
+
+	fun hideSpinner() {
+		if (spinner != null) {
+			spinner?.removeFromParent()
+			spinner = null
+		}
+	}
 }

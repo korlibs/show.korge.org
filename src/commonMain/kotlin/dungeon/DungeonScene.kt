@@ -37,6 +37,8 @@ import korlibs.render.*
 
 class DungeonScene : ShowScene() {
     override suspend fun SContainer.sceneMain() {
+        showSpinner()
+
         //val ldtk = KR.gfx.dungeonTilesmapCalciumtrice.__file.readLDTKWorld()
         val atlas = MutableAtlasUnit()
 
@@ -455,6 +457,7 @@ class DungeonScene : ShowScene() {
             //    }
         }
 
+        hideSpinner()
     }
 
     /*
