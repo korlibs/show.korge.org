@@ -21,10 +21,8 @@ korge {
 	
 	targetJvm()
 	targetJs()
-	//targetDesktop()
-	//targetIos()
-	//targetAndroidIndirect() // targetAndroidDirect()
-	//targetAndroidDirect()
+	targetIos()
+	targetAndroid()
 
 	// Box2d
 	//bundle("https://github.com/korlibs/korge-bundles.git::korge-box2d::f400451fba241e33a863cedf924ab2b673a534cb##37fb37db98214464267051ee4a9bb9a37cfc830d520552340f88ccd5fdcd4bdc")
