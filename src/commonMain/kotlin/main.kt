@@ -40,6 +40,7 @@ suspend fun main() {
 		val GROUP_PERFORMANCE = "Performance"
 		val GROUP_UI = "UI"
 		val GROUP_3D = "3D"
+		val GROUP_SWF = "SWF"
 		val GROUP_TILEMAP = "TileMaps"
 		register(
 			SceneInfo(title = "Rotating Image", group = GROUP_BASICS, srcPath = "scene1/Scene1.kt") { Scene1() },
@@ -48,7 +49,7 @@ suspend fun main() {
 			SceneInfo(title = "Anchor/Scale", group = GROUP_BASICS, srcPath = "anchorscale/MainUIImageTester.kt") { MainUIImageTester() },
 			SceneInfo(title = "Filters", group = GROUP_ADVANCED, srcPath = "filters/FiltersScene.kt") { FiltersScene() },
 			SceneInfo(title = "3D", group = GROUP_3D, srcPath = "k3d/K3DScene.kt") { K3DScene() },
-			SceneInfo(title = "SWF", group = GROUP_3D, srcPath = "swf/SWFScene.kt") { SWFScene() },
+			SceneInfo(title = "SWF", group = GROUP_SWF, srcPath = "swf/SWFScene.kt") { SWFScene() },
 			SceneInfo(title = "Simple Box2d", group = GROUP_PHYSICS, srcPath = "box2d/SimpleBox2dScene.kt") { SimpleBox2dScene() },
 			//SceneInfo(title = "Dragonbones", group = GROUP_SKELETON, srcPath = "dragonbones/DragonbonesScene.kt") { DragonbonesScene() }, // JS-IR has issues with this demo
 			SceneInfo(title = "Spine", group = GROUP_SKELETON, srcPath = "spine/SpineScene.kt") { SpineScene() },
