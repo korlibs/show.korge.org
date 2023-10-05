@@ -30,7 +30,7 @@ jobs:
         run: |
           ./gradlew jsBrowserProductionWebpack
       - name: Deploy 🚀 to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.4.3
+        uses: JamesIves/github-pages-deploy-action@a1ea191d508feb8485aceba848389d49f80ca2dc # https://github.com/JamesIves/github-pages-deploy-action/releases/tag/v4.4.3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: github-pages # The branch the action should deploy to.
