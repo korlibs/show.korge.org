@@ -24,7 +24,7 @@ class SimpleUIScene : ShowScene() {
 		font = DefaultTtfFont.toBitmapFont(16f)
 		solidRect = solidRect(100, 100, Colors["#700ec7"]).position(200.0, 100.0).centered
 
-		uiVerticalStack(width = 150f) {
+		uiVerticalStack(width = 150.0) {
 			uiButton(label = "Open Window List") {
 				onClick {
 					container.openLazyLongListWindow()
@@ -51,8 +51,8 @@ class SimpleUIScene : ShowScene() {
 			styles.textFont = font
 			uiVerticalList(object : UIVerticalList.Provider {
 				override val numItems: Int = 1000
-				override val fixedHeight: Float = 20f
-				override fun getItemHeight(index: Int): Float = fixedHeight
+				override val fixedHeight: Double = 20.0
+				override fun getItemHeight(index: Int): Double = fixedHeight
 				override fun getItemView(index: Int, vlist: UIVerticalList): View = UIText(" HELLO WORLD $index")
 			})
 		}.centerOnStage()
@@ -70,16 +70,16 @@ class SimpleUIScene : ShowScene() {
 	fun Container.openPropertiesWindow() {
 		uiWindow("Properties", Size(400, 300)) {
 			it.container.mobileBehaviour = false
-			it.container.overflowRate = 0f
-			uiVerticalStack(300f) {
+			it.container.overflowRate = 0.0
+			uiVerticalStack(300.0) {
 				uiText("Properties").also {
 					it.styles.textColor = Colors.RED
 				}
 				//append(UIPropertyRow("Name")) { container.uiTextInput(solidRect.name ?: "") }
 				uiPropertyNumberRow("Alpha", *UIEditableNumberPropsList(solidRect::alpha))
-				uiPropertyNumberRow("Position", *UIEditableNumberPropsList(solidRect::x, solidRect::y, min = -1024f, max = +1024f, clamped = false))
-				uiPropertyNumberRow("Size", *UIEditableNumberPropsList(solidRect::width, solidRect::height, min = -1024f, max = +1024f, clamped = false))
-				uiPropertyNumberRow("Scale", *UIEditableNumberPropsList(solidRect::scaleX, solidRect::scaleY, min = -1f, max = +1f, clamped = false))
+				uiPropertyNumberRow("Position", *UIEditableNumberPropsList(solidRect::x, solidRect::y, min = -1024.0, max = +1024.0, clamped = false))
+				uiPropertyNumberRow("Size", *UIEditableNumberPropsList(solidRect::width, solidRect::height, min = -1024.0, max = +1024.0, clamped = false))
+				uiPropertyNumberRow("Scale", *UIEditableNumberPropsList(solidRect::scaleX, solidRect::scaleY, min = -1.0, max = +1.0, clamped = false))
 				uiPropertyNumberRow("Rotation", *UIEditableNumberPropsList(solidRect::rotationDeg, min = -360.0, max = +360.0, clamped = true))
 				val skewProp = uiPropertyNumberRow("Skew", *UIEditableNumberPropsList(solidRect::skewXDeg, solidRect::skewYDeg, min = -360.0, max = +360.0, clamped = true))
 				append(UIPropertyRow("Visible")) {

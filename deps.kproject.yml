@@ -1,7 +1,7 @@
 dependencies:
-- https://github.com/korlibs/korge-spine/tree/v0.0.3/korge-spine##397698e8da9b8d790fb7b99146a1687da74fa3f0
-- https://github.com/korlibs/korge-dragonbones/tree/v0.0.5/korge-dragonbones##e82e3f49753f6231532c44d9b5cfda03660098a0
-- https://github.com/korlibs/korge-box2d/tree/0.0.2/korge-box2d##888a28de45cc72270bb02a43e09acc40f82d956c
-- https://github.com/korlibs/korge-k3d/tree/v0.0.3/korge-k3d##f1fb3c4db97c87b9543e14cf6788dd6dd6b6b931
-- https://github.com/korlibs/korge-ldtk/tree/v0.0.4/korge-ldtk##a4e753a009531dc1206b421f8bd9eeee0274a126
-- https://github.com/korlibs/korge-virtualcontroller/tree/0.0.4/korge-virtualcontroller##2e465059da35e9fb813ae87f40e6a11f68152cf7
+- https://github.com/korlibs/korge-spine/tree/v1.0.1/korge-spine##b69259d954b0cd421b990300477ba981cfab2962
+- https://github.com/korlibs/korge-dragonbones/tree/v1.0.1/korge-dragonbones##bffd9e721d66411dce25937042add6d1d7fc1bc3
+- https://github.com/korlibs/korge-virtualcontroller/tree/v1.0.1/korge-virtualcontroller##5cf53caa4eb4d8cdd550751aeb12e95633624160
+- https://github.com/korlibs/korge-box2d/tree/v0.1.1/korge-box2d##5d3ead41419d3072d3ba7d470f92f0fd7290205c
+- https://github.com/korlibs/korge-ldtk/tree/v1.0.1/korge-ldtk##1449331b57dc2828b686a0fc3b120b45ddaa0973
+- https://github.com/korlibs/korge-k3d/tree/v0.0.4/korge-k3d##93252fd5dc83c2626113ebc1b5e910990ab27a35

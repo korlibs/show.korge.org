@@ -60,7 +60,7 @@ class EasingsScene : ShowScene() {
         )
 
         container {
-            scaleAvg = 0.9f
+            scale = 0.9
             var mn = 0
             for (my in 0 until 4) {
                 for (mx in 0 until 8) {

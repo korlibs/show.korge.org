@@ -40,7 +40,7 @@ class SpineScene : ShowScene() {
         // Add view
         container {
             //speed = 2.0
-            speed = 1.0f
+            speed = 1.0
             scale(2.0)
             position(views.virtualWidth * 0.5, views.virtualHeight * 0.9)
             skeletonView(skeleton, state)

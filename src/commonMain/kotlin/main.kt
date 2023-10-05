@@ -14,7 +14,7 @@ import filters.*
 import gestures.*
 import k3d.K3DScene
 import korlibs.math.geom.Size
-import korlibs.memory.Platform
+import korlibs.platform.*
 import korlibs.render.GameWindow
 import scene1.*
 import scene2.*

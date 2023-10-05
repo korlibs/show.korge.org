@@ -29,13 +29,13 @@ class GesturesScene : ShowScene() {
         text("Zoom and rotate with two fingers")
 
         touch {
-            var startImageRatio = 1.0f
+            var startImageRatio = 1.0
             var startRotation = 0.degrees
 
             scaleRecognizer(start = {
-                startImageRatio = image.scaleAvg
+                startImageRatio = image.scale
             }) {
-                image.scaleAvg = startImageRatio * this.ratio
+                image.scale = startImageRatio * this.ratio
             }
 
             rotationRecognizer(start = {
@@ -47,7 +47,7 @@ class GesturesScene : ShowScene() {
 
         image.mouse {
             click {
-                image.alpha = if (image.alpha > 0.5) 0.5f else 1.0f
+                image.alpha = if (image.alpha > 0.5) 0.5 else 1.0
             }
         }
 

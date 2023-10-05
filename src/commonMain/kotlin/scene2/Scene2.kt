@@ -16,10 +16,10 @@ class Scene2 : ShowScene() {
 			anchor(.5, .5)
 			scale(.8)
 			position(400, 300)
-			alpha = 0.5f
+			alpha = 0.5
 			mouse {
-				onOver { alpha = 1.0f }
-				onOut { alpha = 0.5f }
+				onOver { alpha = 1.0 }
+				onOut { alpha = 0.5 }
 			}
 		}
 	}

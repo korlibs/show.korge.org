@@ -14,6 +14,7 @@ import korlibs.io.lang.*
 import extension.*
 import korlibs.memory.Buffer
 import korlibs.memory.f32
+import kotlinx.coroutines.*
 import kotlin.random.*
 
 private class BunnyContainer(maxSize: Int) : FSprites(maxSize) {

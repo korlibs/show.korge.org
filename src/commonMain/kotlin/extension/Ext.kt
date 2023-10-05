@@ -1,7 +1,7 @@
 package extension
 
 import korlibs.datastructure.*
-import korlibs.inject.AsyncInjector
+import korlibs.inject.*
 import korlibs.korge.scene.*
 import korlibs.korge.view.*
 import korlibs.io.lang.*
@@ -41,7 +41,7 @@ class SceneInfo<T : ShowScene>(
 	val group: String,
 	val path: String,
 	val clazz: KClass<out T>,
-	val gen: suspend AsyncInjector.() -> T
+	val gen: Injector.() -> T
 ) {
 	val className get() = clazz.portableSimpleName
 	override fun toString(): String = title
@@ -51,7 +51,7 @@ inline fun <reified T : ShowScene> SceneInfo(
 	title: String = "title",
 	group: String = "group",
 	srcPath: String = "/src/commonMain/kotlin/main.kt",
-	noinline gen: suspend AsyncInjector.() -> T
+	noinline gen: Injector.() -> T
 ): SceneInfo<T> {
 	return SceneInfo(title, group, srcPath, T::class, gen)
 }

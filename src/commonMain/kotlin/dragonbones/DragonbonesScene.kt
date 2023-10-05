@@ -67,8 +67,8 @@ private class MyScene : MyBaseScene() {
         //}
 
         val mySceneContainer = sceneContainer(views) {
-            this.x = views.virtualWidth.toFloat() * 0.5f
-            this.y = views.virtualHeight.toFloat() * 0.5f
+            this.x = views.virtualWidth.toDouble() * 0.5
+            this.y = views.virtualHeight.toDouble() * 0.5
         }
         buttonContainer = this
         this += Button("Hello") {
@@ -399,7 +399,7 @@ private abstract class BaseDbScene : MyBaseScene() {
 
 private class Button(text: String, handler: suspend () -> Unit) : Container() {
     //val textField = TextOld(text, textSize = 32.0).apply { filtering = false }
-    val textField = Text(text, textSize = 32f).apply { smoothing = false }
+    val textField = Text(text, textSize = 32.0).apply { smoothing = false }
     private val bounds = textField.textBounds
     val g = Graphics().apply {
         updateShape {
@@ -421,9 +421,9 @@ private class Button(text: String, handler: suspend () -> Unit) : Container() {
 
     fun updateState() {
         when {
-            !enabledButton -> alpha = 0.3f
-            overButton -> alpha = 1.0f
-            else -> alpha = 0.8f
+            !enabledButton -> alpha = 0.3
+            overButton -> alpha = 1.0
+            else -> alpha = 0.8
         }
     }
 

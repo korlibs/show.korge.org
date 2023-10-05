@@ -33,15 +33,16 @@ import korlibs.math.interpolation.*
 import korlibs.memory.*
 import korlibs.time.*
 import kotlin.math.*
-import korlibs.memory.isAlmostZero
 import korlibs.render.*
 
 class DungeonScene : ShowScene() {
     override suspend fun SContainer.sceneMain() {
         //val ldtk = KR.gfx.dungeonTilesmapCalciumtrice.__file.readLDTKWorld()
         val atlas = MutableAtlasUnit()
-        val font = resourcesVfs["fonts/PublicPixel.ttf"].readTtfFont().lazyBitmapSDF
-        val wizardFemale = resourcesVfs["gfx/wizard_f.ase"].readImageDataContainer(ASE.toProps(), atlas)
+
+        val font = KR.fonts.publicpixel.read().lazyBitmapSDF
+
+        val wizardFemale = KR.gfx.wizardF.read(atlas)
         val clericFemale = resourcesVfs["gfx/cleric_f.ase"].readImageDataContainer(ASE.toProps(), atlas)
         val minotaur = resourcesVfs["gfx/minotaur.ase"].readImageDataContainer(ASE.toProps(), atlas)
         //val ldtk = localCurrentDirVfs["../korge-free-gfx/Calciumtrice/tiles/dungeon_tilesmap_calciumtrice.ldtk"].readLDTKWorld()
@@ -64,7 +65,7 @@ class DungeonScene : ShowScene() {
         //val camera = container {
             levelView = LDTKLevelView(level).addTo(this)//.xy(0, 8)
             highlight = graphics { }
-                .filters(BlurFilterEx(2f).also { it.filtering = false })
+                .filters(BlurFilter(2.0).also { it.filtering = false })
             annotations = graphics {  }
             //annotations2 = container {  }
             //setTo(Rectangle(0f, 0f, levelView.width, levelView.height))
@@ -108,7 +109,7 @@ class DungeonScene : ShowScene() {
         val mage = entities.first {
             it.fieldsByName["Name"]?.valueString == "Mage"
         }.apply {
-            replaceView(ImageDataView2(wizardFemale.default).also {
+            replaceView(ImageDataView2(wizardFemale.data.default).also {
                 it.smoothing = false
                 it.animation = "idle"
                 it.anchor(Anchor.BOTTOM_CENTER)
@@ -159,7 +160,7 @@ class DungeonScene : ShowScene() {
         )
 
         var lastInteractiveView: View? = null
-        var playerDirection = Vector2(1f, 0f)
+        var playerDirection = Vector2D(1.0, 0.0)
         val gridSize = Size(16, 16)
 
         var playerState = ""
@@ -184,11 +185,11 @@ class DungeonScene : ShowScene() {
             return grid.check((pos / gridSize).toInt())
         }
 
-        fun doRay(pos: Point, dir: Vector2, property: String): RayResult? {
+        fun doRay(pos: Point, dir: Vector2D, property: String): RayResult? {
             // @TODO: FIXME! This is required because BVH produces wrong intersect distance for completely vertical rays. We should fix that.
-            val dir = Vector2(
-                if (dir.x.isAlmostEquals(0f)) .00001f else dir.x,
-                if (dir.y.isAlmostEquals(0f)) .00001f else dir.y,
+            val dir = Vector2D(
+                if (dir.x.isAlmostEquals(0.0)) .00001 else dir.x,
+                if (dir.y.isAlmostEquals(0.0)) .00001 else dir.y,
             )
             val ray = Ray(pos, dir)
             val outResults = arrayListOf<RayResult?>()
@@ -206,7 +207,7 @@ class DungeonScene : ShowScene() {
                 //}
                 val normalX = if (intersectionPos.x <= rect.left + 0.5f) -1f else if (intersectionPos.x >= rect.right - .5f) +1f else 0f
                 val normalY = if (intersectionPos.y <= rect.top + 0.5f) -1f else if (intersectionPos.y >= rect.bottom - .5f) +1f else 0f
-                val rayResult = RayResult(ray, intersectionPos, Vector2(normalX, normalY))?.also { it.view = view }
+                val rayResult = RayResult(ray, intersectionPos, Vector2D(normalX, normalY))?.also { it.view = view }
 
                 val entityView = view as? LDTKEntityView
                 val doBlock = entityView?.fieldsByName?.get(property)
@@ -230,7 +231,7 @@ class DungeonScene : ShowScene() {
             return results.view
         }
 
-        fun updateRay(pos: Point): Float {
+        fun updateRay(pos: Point): Double {
             val ANGLES_COUNT = 64
             val angles = (0 until ANGLES_COUNT).map { Angle.FULL * (it.toFloat() / ANGLES_COUNT.toFloat()) }
             //val angles = listOf(Angle.ZERO, Angle.HALF)
@@ -245,7 +246,7 @@ class DungeonScene : ShowScene() {
             while (anglesDeque.isNotEmpty()) {
                 val angle = anglesDeque.removeFirst()
                 val last = results.lastOrNull()
-                val current = doRay(pos, Vector2.polar(angle), "Occludes") ?: continue
+                val current = doRay(pos, Vector2D.polar(angle), "Occludes") ?: continue
                 current?.blockedResults?.let {
                     results2 += it.filterNotNull()
                 }
@@ -267,16 +268,16 @@ class DungeonScene : ShowScene() {
             entities.fastForEach { entity ->
                 if ("hide_on_fog" in entity.entity.tags) {
                     entity.simpleAnimator.cancel().sequence {
-                        tween(entity::alpha[if (entity != player) .1f else 1f], time = 0.25.seconds)
+                        tween(entity::alpha[if (entity != player) .1 else 1.0], time = 0.25.seconds)
                     }
                 }
             }
 
             for (result in (results + results2)) {
                 val view = result.view ?: continue
-                if (view.alpha != 1f) {
+                if (view.alpha != 1.0) {
                     view.simpleAnimator.cancel().sequence {
-                        tween(view::alpha[1f], time = 0.25.seconds)
+                        tween(view::alpha[1.0], time = 0.25.seconds)
                     }
                 }
             }
@@ -309,7 +310,7 @@ class DungeonScene : ShowScene() {
                 if (showAnnotations) {
                     for (result in results) {
                         fill(Colors.RED) {
-                            circle(result.point, 2f)
+                            circle(result.point, 2.0)
                         }
                         //stroke(Colors.BLUE.withAd(0.1)) {
                         //    line(pos, result.point)
@@ -317,12 +318,12 @@ class DungeonScene : ShowScene() {
                     }
                     for (result in results) {
                         stroke(Colors.GREEN) {
-                            line(result.point, result.point + result.normal * 4f)
+                            line(result.point, result.point + result.normal * 4.0)
                         }
 
                         val newVec = (result.point - pos).reflected(result.normal).normalized
                         stroke(Colors.YELLOW) {
-                            line(result.point, result.point + newVec * 4f)
+                            line(result.point, result.point + newVec * 4.0)
                         }
                     }
                 }
@@ -346,7 +347,7 @@ class DungeonScene : ShowScene() {
                     }
                 }
             }
-            return results.map { it.point.distanceTo(pos) }.minOrNull() ?: 0f
+            return results.map { it.point.distanceTo(pos) }.minOrNull() ?: 0.0
             //println("result=$result")
         }
 
@@ -356,7 +357,7 @@ class DungeonScene : ShowScene() {
 
             val playerView = (player.view as ImageDataView2)
             if (!dx.isAlmostZero() || !dy.isAlmostZero()) {
-                playerDirection = Vector2(dx.normalizeAlmostZero().sign, dy.normalizeAlmostZero().sign)
+                playerDirection = Vector2D(dx.normalizeAlmostZero().sign, dy.normalizeAlmostZero().sign)
                 //println("playerDirection=$playerDirection")
             }
             if (dx == 0f && dy == 0f) {
@@ -364,19 +365,19 @@ class DungeonScene : ShowScene() {
             } else {
                 playerState = ""
                 playerView.animation = "walk"
-                playerView.scaleX = if (playerDirection.x < 0) -1f else +1f
+                playerView.scaleX = if (playerDirection.x < 0) -1.0 else +1.0
             }
-            val speed = 1.5f
-            val newDir = Vector2(dx.toFloat() * speed, dy.toFloat() * speed)
+            val speed = 1.5
+            val newDir = Vector2D(dx.toFloat() * speed, dy.toFloat() * speed)
             val oldPos = player.pos
             val moveRay = doRay(oldPos, newDir, "Collides")
             val finalDir = if (moveRay != null && moveRay.point.distanceTo(oldPos) < 6f) {
                 val res = newDir.reflected(moveRay.normal)
                 // @TODO: Improve sliding
-                if (moveRay.normal.y != 0f) {
-                    Vector2(res.x, 0f)
+                if (moveRay.normal.y != .0) {
+                    Vector2D(res.x, 0.0)
                 } else {
-                    Vector2(0f, res.y)
+                    Vector2D(0.0, res.y)
                 }
             } else {
                 newDir
@@ -779,45 +780,12 @@ open class ImageAnimationView2<T : SmoothedBmpSlice>(
     }
 }
 
-inline operator fun Vector2.rem(that: Vector2): Vector2 = Point(x % that.x, y % that.y)
-inline operator fun Vector2.rem(that: Size): Vector2 = Point(x % that.width, y % that.height)
-inline operator fun Vector2.rem(that: Float): Vector2 = Point(x % that, y % that)
+inline operator fun Vector2.rem(that: Vector2D): Vector2D = Point(x % that.x, y % that.y)
+inline operator fun Vector2.rem(that: Size): Vector2D = Point(x % that.width, y % that.height)
+inline operator fun Vector2.rem(that: Float): Vector2D = Point(x % that, y % that)
 
 private var RayResult.view: View? by Extra.Property { null }
 private var RayResult.blockedResults: List<RayResult>? by Extra.Property { null }
-
-class BlurFilterEx(
-    radius: Float = 4f,
-    expandBorder: Boolean = true,
-    @ViewProperty
-    var optimize: Boolean = true
-) : ComposedFilter() {
-    private val horizontal = DirectionalBlurFilter(angle = 0.degrees, radius, expandBorder).also { filters.add(it) }
-    private val vertical = DirectionalBlurFilter(angle = 90.degrees, radius, expandBorder).also { filters.add(it) }
-    var filtering: Boolean
-        get() = horizontal.filtering
-        set(value) {
-            horizontal.filtering = value
-            vertical.filtering = value
-        }
-    @ViewProperty
-    var expandBorder: Boolean
-        get() = horizontal.expandBorder
-        set(value) {
-            horizontal.expandBorder = value
-            vertical.expandBorder = value
-        }
-    @ViewProperty
-    var radius: Float = radius
-        set(value) {
-            field = value
-            horizontal.radius = radius
-            vertical.radius = radius
-        }
-    override val recommendedFilterScale: Float get() = if (!optimize || radius <= 2.0) 1f else 1f / log2(radius.toFloat() * 0.5f)
-
-    override val isIdentity: Boolean get() = radius == 0f
-}
 
 //suspend fun main() = Korge(windowSize = Size(1280, 720), backgroundColor = Colors["#2b2b2b"], displayMode = KorgeDisplayMode.TOP_LEFT_NO_CLIP) {
 //    val sceneContainer = sceneContainer()
