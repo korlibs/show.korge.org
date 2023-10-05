@@ -12,8 +12,8 @@ import korlibs.korge.view.*
 import korlibs.math.geom.*
 import tools.*
 
-class MainUIImageTester : ShowScene() {
-    override suspend fun SContainer.sceneMain() {
+class MainUIImageTester : AutoShowScene() {
+    override suspend fun SContainer.main() {
         //val imageData = resourcesVfs["vampire.ase"].readBitmapImageData(ASE.toProps())
         ////val imageData = resourcesVfs["vampire_slices_fixed.ase"].readImageDataContainer(ASE.toProps())
         //image(imageData.mainBitmap).scale(8.0)
