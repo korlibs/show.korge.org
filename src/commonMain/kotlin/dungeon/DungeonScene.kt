@@ -58,7 +58,8 @@ class DungeonScene : ShowScene() {
         println("tileEntitiesByName=$tileEntitiesByName")
         //println()
         //LDTKWorldView(ldtk, showCollisions = true).addTo(this)
-        var showAnnotations = true
+        //var showAnnotations = true
+        var showAnnotations = false
         lateinit var levelView: LDTKLevelView
         lateinit var annotations: Graphics
         lateinit var annotations2: Container
