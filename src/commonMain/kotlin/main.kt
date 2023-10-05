@@ -1,3 +1,4 @@
+import anchorscale.*
 import box2d.*
 import bunnymark.*
 import dungeon.DungeonScene
@@ -43,6 +44,7 @@ suspend fun main() {
 			SceneInfo(title = "Rotating Image", group = GROUP_BASICS, srcPath = "scene1/Scene1.kt") { Scene1() },
 			SceneInfo(title = "Tinting", group = GROUP_BASICS, srcPath = "scene2/Scene2.kt") { Scene2() },
 			SceneInfo(title = "Easing", group = GROUP_BASICS, srcPath = "easings/EasingsScene.kt") { EasingsScene() },
+			SceneInfo(title = "Anchor/Scale", group = GROUP_BASICS, srcPath = "anchorscale/MainUIImageTester.kt") { MainUIImageTester() },
 			SceneInfo(title = "Filters", group = GROUP_ADVANCED, srcPath = "filters/FiltersScene.kt") { FiltersScene() },
 			SceneInfo(title = "3D", group = GROUP_3D, srcPath = "k3d/K3DScene.kt") { K3DScene() },
 			SceneInfo(title = "Simple Box2d", group = GROUP_PHYSICS, srcPath = "box2d/SimpleBox2dScene.kt") { SimpleBox2dScene() },
