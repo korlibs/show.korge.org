@@ -9,12 +9,13 @@ import korlibs.image.format.*
 import korlibs.io.file.std.*
 import korlibs.math.interpolation.*
 import extension.*
+import korlibs.math.geom.*
 
 class FiltersScene : ShowScene() {
 	override suspend fun SContainer.sceneMain() {
 		val bitmap = resourcesVfs["korge.png"].readBitmap()
 
-		val wave = WaveFilter()
+		val wave = WaveFilter(amplitude = Vector2D(20, 16), crestDistance = Vector2D(256, 256))
 		image(bitmap) {
 			scale(.5)
 			position(0, 0)
