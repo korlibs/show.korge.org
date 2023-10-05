@@ -84,7 +84,7 @@ abstract class ShowScene : Scene() {
 				arc(Point(0, 0), 48.0, 0.degrees, 60.degrees)
 				arc(Point(0, 0), 48.0, 180.degrees, (180 + 60).degrees)
 			}
-		}.position(width * 0.5, height * 0.5)
+		}.position(width * 0.5, height * 0.5).zIndex(+99999)
 		spinner!!.addUpdater { rotation += (it.seconds * 100).degrees }
 	}
 
