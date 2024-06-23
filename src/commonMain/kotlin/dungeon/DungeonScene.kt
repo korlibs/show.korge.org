@@ -687,7 +687,7 @@ open class ImageAnimationView2<T : SmoothedBmpSlice>(
                             image.stackedIntMap = StackedIntArray2(IntArray2(1, 1, 0))
                             image.tileset = TileSet.EMPTY
                         } else {
-                            image.stackedIntMap = StackedIntArray2(tilemap.data)
+                            image.map = TileMapData(tilemap.data)
                             image.tileset = tilemap.tileSet ?: TileSet.EMPTY
                         }
                     }

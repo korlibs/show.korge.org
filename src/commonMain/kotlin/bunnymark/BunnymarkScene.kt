@@ -12,6 +12,7 @@ import korlibs.io.async.*
 import korlibs.io.file.std.*
 import korlibs.io.lang.*
 import extension.*
+import korlibs.concurrent.thread.*
 import korlibs.memory.Buffer
 import korlibs.memory.f32
 import kotlinx.coroutines.*
@@ -29,9 +30,9 @@ private class BunnyContainer(maxSize: Int) : FSprites(maxSize) {
 // https://www.goodboydigital.com/pixijs/bunnymark/js/bunnyBenchMark.js
 class BunnymarkScene : ShowScene() {
     override suspend fun SContainer.sceneMain() {
-        println("currentThreadId=$currentThreadId")
+        println("currentThreadId=${NativeThread.currentThreadId}")
         delay(1.milliseconds)
-        println("currentThreadId=$currentThreadId")
+        println("currentThreadId=${NativeThread.currentThreadId}")
         println("ag.graphicExtensions=${ag.graphicExtensions}")
         println("ag.isFloatTextureSupported=${ag.isFloatTextureSupported}")
         println("ag.isInstancedSupported=${ag.isInstancedSupported}")

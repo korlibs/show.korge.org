@@ -2,7 +2,8 @@
 /.idea
 /build
 /bundles
-/modules
+/.kotlin
+#/modules
 /deps
 *.iml
 *.hprof
