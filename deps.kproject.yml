@@ -6,3 +6,4 @@ dependencies:
 - https://github.com/korlibs/korge-k3d/tree/v0.0.4/korge-k3d##93252fd5dc83c2626113ebc1b5e910990ab27a35
 - https://github.com/korlibs/korge-swf/tree/v1.0.3/korge-swf##50ee8803784cded4fb9d5a75715ec720574d8c7e
 - https://github.com/korlibs/korge-spine/tree/v1.0.2/korge-spine##daad58c21930295c293fff84036c518b0c5f5daa
+- https://github.com/korlibs/korge-ext/tree/v0.1.3/korma-tile-matching/korma-tile-matching##2a331af4bab999c105c5f945b152e5f95dbf49f1

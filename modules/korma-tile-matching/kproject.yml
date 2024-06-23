@@ -1,0 +1,6 @@
+name: "korma-tile-matching"
+plugins:
+  #- serialization
+dependencies:
+  - "maven::common::com.soywiz.korge:korge"
+

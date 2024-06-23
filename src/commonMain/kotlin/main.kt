@@ -61,6 +61,7 @@ suspend fun main() {
 			SceneInfo(title = "Bunnymark", group = GROUP_PERFORMANCE, srcPath = "bunnymark/BunnymarkScene.kt") { BunnymarkScene() },
 			SceneInfo(title = "UI", group = GROUP_UI, srcPath = "ui/SimpleUIScene.kt") { SimpleUIScene() },
 			SceneInfo(title = "Dungeon Explorer", group = GROUP_TILEMAP, srcPath = "dungeon/DungeonScene.kt") { DungeonScene() },
+			SceneInfo(title = "Snake", group = GROUP_TILEMAP, srcPath = "snake/scene/IngameScene.kt") { snake.scene.SnakeScene() },
 		)
 
 		// Elements

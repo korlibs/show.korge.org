@@ -6,6 +6,9 @@ import korlibs.inject.*
 import korlibs.korge.scene.*
 import korlibs.korge.view.*
 import korlibs.io.lang.*
+import korlibs.korge.ui.focus
+import korlibs.korge.ui.focusable
+import korlibs.korge.ui.makeFocusable
 import korlibs.math.geom.*
 import korlibs.time.*
 import kotlin.reflect.*
@@ -63,6 +66,9 @@ val Stage.registeredScenes by extraProperty { LinkedHashMap<String, SceneInfo<ou
 
 abstract class AutoShowScene : ShowScene() {
 	final override suspend fun SContainer.sceneMain() {
+		makeFocusable {
+
+		}
 		showSpinner()
 		try {
 			main()
