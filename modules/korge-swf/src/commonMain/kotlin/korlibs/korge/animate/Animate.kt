@@ -11,7 +11,6 @@ import korlibs.image.vector.EmptyShape
 import korlibs.image.vector.Shape
 import korlibs.io.async.Signal
 import korlibs.io.async.launchImmediately
-import korlibs.io.lang.Closeable
 import korlibs.io.util.Once
 import korlibs.korge.animate.internal.*
 import korlibs.korge.render.*
@@ -694,7 +693,7 @@ class AnMovieClip(override val library: AnLibrary, override val symbol: AnSymbol
 	private suspend fun _waitEvent(eventsSet: Set<String>, afterSignals: () -> Unit = {}): String? {
 		val once = Once()
 		val deferred = CompletableDeferred<String?>(Job())
-		val closeables = arrayListOf<Closeable>()
+		val closeables = arrayListOf<AutoCloseable>()
 		//println("Listening($onEvent) : $eventsSet")
 		closeables += onStop {
 			//println("onStop")

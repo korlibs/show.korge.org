@@ -79,13 +79,13 @@ open class SWF : SWFTimelineContainer(), Extra by Extra.Mixin() {
 			else -> throw Error("Not a SWF. First signature byte is 0x" + signatureByte.toString(16) + " (expected: 0x43 or 0x5A or 0x46)")
 		}
 
-		signature += String_fromIntArray(intArrayOf(signatureByte.toChar().toInt()))
+		signature += String.fromIntArray(intArrayOf(signatureByte.toChar().toInt()))
 		signatureByte = bytes.readUI8()
 		if (signatureByte != 0x57) throw Error("Not a SWF. Second signature byte is 0x" + signatureByte.toString(16) + " (expected: 0x57)")
-		signature += String_fromIntArray(intArrayOf(signatureByte.toChar().toInt()))
+		signature += String.fromIntArray(intArrayOf(signatureByte.toChar().toInt()))
 		signatureByte = bytes.readUI8()
 		if (signatureByte != 0x53) throw Error("Not a SWF. Third signature byte is 0x" + signatureByte.toString(16) + " (expected: 0x53)")
-		signature += String_fromIntArray(intArrayOf(signatureByte.toChar().toInt()))
+		signature += String.fromIntArray(intArrayOf(signatureByte.toChar().toInt()))
 		version = bytes.readUI8()
 		fileLength = bytes.readUI32()
 		fileLengthCompressed = bytes.length

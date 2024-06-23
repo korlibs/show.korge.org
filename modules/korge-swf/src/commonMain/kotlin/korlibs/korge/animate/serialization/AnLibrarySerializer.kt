@@ -13,7 +13,6 @@ import korlibs.korge.animate.AnSymbolShape
 import korlibs.korge.animate.AnSymbolSound
 import korlibs.korge.animate.AnTextFieldSymbol
 import korlibs.korge.view.BlendMode
-import korlibs.korge.view.ordinal
 import korlibs.image.bitmap.Bitmap
 import korlibs.image.bitmap.bounds
 import korlibs.image.color.ColorTransform
@@ -31,6 +30,7 @@ import korlibs.io.stream.writeS_VL
 import korlibs.io.stream.writeStringVL
 import korlibs.io.stream.writeStringz
 import korlibs.io.stream.writeU_VL
+import korlibs.korge.blend.*
 import korlibs.math.*
 import korlibs.math.geom.*
 import korlibs.math.interpolation.*

@@ -2,7 +2,6 @@ package korlibs.korfl.as3swf
 
 import korlibs.datastructure.DoubleArrayList
 import korlibs.datastructure.IntArrayList
-import korlibs.io.lang.format
 import korlibs.math.geom.*
 import korlibs.math.geom.vector.LineScaleMode
 import korlibs.util.*
