@@ -1,5 +1,6 @@
 package extension
 
+import korlibs.graphics.gl.jsObject
 import korlibs.time.*
 import korlibs.korge.view.*
 import korlibs.io.*
