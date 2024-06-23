@@ -5,7 +5,7 @@ package korlibs.korge3d.tween
 import korlibs.korge.tween.get
 import korlibs.korge.tween.tween
 import korlibs.korge3d.View3D
-import korlibs.math.interpolation.Easing
+import korlibs.math.interpolation.*
 import korlibs.time.*
 
 @PublishedApi
