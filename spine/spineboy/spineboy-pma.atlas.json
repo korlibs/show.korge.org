@@ -23,7 +23,7 @@
   },
   "meta": {
     "app": "https://korge.org/",
-    "version": "5.1.0",
+    "version": "6.0.0-alpha5",
     "image": "spineboy-pma.atlas.png",
     "format": "RGBA8888",
     "size": {
